@@ -1,0 +1,62 @@
+<style>
+    .drop-menu{position: absolute;right: 0;left:auto;width:100%;z-index: 99999; background: #3c8dbc;
+        padding: 5px 0;border-radius: 5px;border-top-left-radius:0;border-top-right-radius:0;}
+    .drop-menu li{list-style: none; text-align: center;}
+    .drop-menu li a{color:#ffffff;font-size: 14px;line-height: 35px;display: block;}
+
+    .alert_bar{z-index: 9999999;width: 588px;position: absolute;top:0;left: 50%;margin-left: -289px;text-align: center;}
+</style>
+<stats></stats>
+
+<div class="wrapper">
+    <header class="main-header">
+
+        <a href="#" class="logo">
+            <span class="logo-mini"><strong>S</strong></span>
+            <span class="logo-lg"><b>S</b>MS</span>
+        </a>
+        
+        <nav class="navbar navbar-static-top">
+
+            
+
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown user user-menu" ng-click="dropDown()">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <img src="img/user2-160x160.jpg" class="user-image" alt="User Image">
+                            <span class="hidden-xs" ng-bind='data.account'></span>
+                        </a>
+                        <ul class="drop-menu">
+                            <li class="user-footer">
+                                <a href="#" ng-click="signout()">退出登录</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            <a href="#" class="sidebar-toggle" ng-click="collapse()">
+                <i class="fa fa-fw fa-bars"> </i>
+            </a>
+            <ul class="sidebar-menu">
+                <li class="treeview" ng-class="{'active':page.current_submenu.indexOf(item.url) !=-1}" ng-repeat="item in page.submenu">
+                    <a href="{{item.url}}">
+                        <i class="fa {{item.icon}}"></i>
+                        <span ng-bind="item.name"></span>
+                        <span class="pull-right-container">
+                          <!-- <i class="fa fa-angle-left pull-right"></i> -->
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </aside>
+    <div class="content-wrapper">
+        <div ui-view></div>
+    </div>
+</div>

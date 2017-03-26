@@ -1,0 +1,73 @@
+<section class="content">
+    <div class="box box-default" sl-load sl-view>
+        <div class="box-header">
+            <h3 class="box-title" ng-bind="page.title"></h3>
+            <sl-breadcrumb></sl-breadcrumb>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="box-data margin-bottom addon-right padding">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="input-group require">
+                            <span class="input-group-addon">打印按键</span>
+                            <select class="form-control" ng-model="data.buttonId" ng-options="v.id as v.label for v in page.deps.buttonId" ng-change="getModalType()" ng-disabled="page.edit"></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group require">
+                            <span class="input-group-addon">模板类型</span>
+                            <select class="form-control" ng-model="data.templateTypeId" ng-options="v.id as v.name for v in page.deps.modalType" ng-change="getModal()"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">快递公司</span>
+                            <select class="form-control" ng-model="data.logisticsId" ng-options="v.id as v.logisticsName for v in page.deps.logisticId"></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">拣货方式</span>
+                            <select class="form-control" ng-model="data.pickType" ng-options="v.id as v.label for v in page.deps.pickType"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="input-group require">
+                            <span class="input-group-addon">打印模板</span>
+                            <select class="form-control" ng-model="data.templateId" ng-options="v.id as v.name for v in page.deps.modal"></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group require">
+                            <span class="input-group-addon">仓库</span>
+                            <select class="form-control" ng-model="data.warehouseCode" ng-options="v.id as v.label for v in page.deps.warehouseId" ng-change="getOwner()"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">商家</span>
+                            <select class="form-control" ng-model="data.businesCode" ng-options="v.id as v.name for v in page.deps.ownerId" ng-change="getShop()"></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">店铺</span>
+                            <select class="form-control" ng-model="data.shopCode" ng-options="v.id as v.name for v in page.deps.shopId"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-footer">
+            <button class="btn btn-normal" ng-disabled="form.$invalid" ng-click="save()">保存</button>
+            <a class="btn btn-default" ng-back>返回</a>
+        </div>
+    </div>
+</section>

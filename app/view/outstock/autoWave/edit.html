@@ -1,0 +1,167 @@
+<section class="content">
+    <form name="form">
+    <div class="box box-default" sl-load sl-view>
+        <div class="box-header">
+            <h3 class="box-title" ng-bind="page.title"></h3>
+            <sl-breadcrumb></sl-breadcrumb>
+        </div>
+        <div class="box-body">
+            <div class="box-data margin-bottom addon-right padding">
+                <div class="row">
+                    <div class="col-sm-4 ">
+                        <div class="input-group require">
+                            <span class="input-group-addon">仓库:</span>
+                            <select class="form-control" ng-model="data.warehouseId" ng-options="v.id as v.label for v in page.deps.warehouseId" ng-change='focus()'  required></select>
+                        </div>                                   
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group require">
+                            <span class="input-group-addon">商家:</span>
+                            <select class="form-control" ng-model="data.ownerId" ng-options="v.id as v.label for v in page.deps.ownerName" ng-change='focus()'  required></select>
+                        </div>     
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">区域:</span>
+                            <!-- 地区选择器指令 -->
+                            <div  sl-area="page.deps.area" sl-area-model="data" sl-area-option = "{city:'city',province:'province', district:'cDistrict'}" sl-area-lv=2>        
+                            </div>
+                        </div>     
+                    </div>
+                </div>
+
+                <div class="row">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">店铺:</span>
+                                <select class="form-control" ng-model="data.shopId" ng-options="v.id as v.label for v in page.deps.shopId" ></select>
+                            </div>     
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group require">
+                                <span class="input-group-addon">承运商:</span>
+                                <select class="form-control" ng-model="data.logisticsId" ng-options="v.id as v.logisticsName for v in page.deps.logisticsId" required ></select>
+                            </div>     
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">订单重量:</span>
+                                <input placeholder="1" class="col-sm-4" type="text" maxlength="4"  ng-model="data.minWeight" ng-pattern='/^[1-9][0-9]{0,3}$/' />
+                                <b style="float: left; display: inline-block; padding: 6px;">——</b>
+                                <input  placeholder="3" class="col-xs-4 " maxlength="4" type="text"  ng-model="data.maxWeight">
+                            </div>     
+                        </div>                    
+                </div>
+
+                <div class="row">
+                        <div class="col-sm-4 ">
+                            <div class="input-group ">
+                                <span class="input-group-addon">SKU数量:</span>
+                                <input placeholder="1" class="col-sm-4" type="text"  ng-model="data.minSkuQuantity">
+                                <b style="float: left; display: inline-block; padding: 6px;">——</b>
+                                <input maxlength="3" placeholder="10(最大输入值999)" class="col-sm-4"  type="text"  ng-model="data.maxSkuQuantity">
+                            </div>       
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                 <span class="input-group-addon">商品数量:</span>
+                                <input placeholder="1" class="col-sm-4" type="text"  ng-model="data.minQuantity">
+                                <b style="float: left; display: inline-block; padding: 6px;">——</b>
+                                <input placeholder="10(最大输入值9999)" class="col-sm-4" maxlength="4"  type="text"  ng-model="data.maxQuantity">
+                            </div>     
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group require">
+                                <span class="input-group-addon">单据类型:</span>
+                                <select class="form-control" ng-model="data.billType" ng-options="v.childCodeId as v.childCodeC for v in page.deps.billType"  required></select>
+                            </div>      
+                        </div>
+                </div>
+
+                <div class="row">
+                        <div class="col-sm-4">
+                            <div class="input-group require">
+                                <span class="input-group-addon">业务类型:</span>
+                                <select class="form-control" ng-model="data.businessType" ng-options="v.childCodeId as v.childCodeC for v in page.deps.businessType" required></select>
+                            </div>      
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">SKU:</span>
+                                <div class="suggest-box" auto-complete='sku_options'>
+
+                                    <input type="text" class="form-control col-xs-9" ng-model="data.skuCode" placeholder="请输入SKU"/>
+                                </div>
+                                <!-- errorMsg-->
+                                <!-- <span style="color:red"  ng-show="form.hsCode.$dirty && form.hsCode.$invalid || !page.verify.hsCode">
+                                    <span ng-show="form.hsCode.$error"># 请按照提示输入/选择正确的HS编码</span>
+                                </span> -->
+                            </div>    
+                        </div>
+                </div>
+
+                <div class="row">
+                        <div class="col-sm-4">
+                            <div class="input-group require">
+                                <span class="input-group-addon ">时间间隔:</span>
+                                <input class="col-sm-11" style="padding: 5px 0px;" type="text" ng-model="data.intervalTime" maxlength="3"  ng-pattern='/^[1-9][0-9]{0,2}$/' required>
+                                <span class="input-group-addon">分钟</span>
+                            </div>            
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group require">
+                                <span class="input-group-addon">时间：</span>
+                                <input  style="padding: 5px 0px;" class="col-sm-5" type="text" ng-model="data.beginExecuteTimeStr" datetime-picker hour="23" minute='59' date-format=" HH:mm" required>
+                                <b style="float: left; display: inline-block; padding: 6px;">——</b>
+                                <input style="padding: 5px 0px;" class="col-sm-5" type="text" name="" ng-model="data.endExecuteTimeStr" datetime-picker hour="23" minute='59' date-format=" HH:mm" required>
+                            </div>
+                        </div>     
+                </div>
+
+                <div class="row">
+                         <div class="col-sm-4 ">
+                            <div class="input-group ">
+                                <span class="input-group-addon">波次规则:</span>
+                                <select class="form-control" ng-model="data.ruleId" ng-options="v.id as v.ruleName for v in ruleList" ></select>
+                            </div>            
+                        </div>
+                        <div class="col-sm-4 ">
+                            <div class="input-group require">
+                                <span class="input-group-addon">拣货方式:</span>
+                                <select class="col-sm-5" ng-model="data.pickType" ng-options="v.id as v.label for v in page.deps.pickType"  required></select>
+                            </div>
+                        </div>
+                </div>
+                <div class="row">
+                         <div class="col-sm-4 ">
+                            <div class="input-group require">
+                                <span class="input-group-addon">订单数量:</span>
+                                <input class="col-sm-12" style="padding: 5px 0px;" type="text" ng-model="data.orderCount" maxlength="4" ng-pattern="/^[1-9][0-9]{0,3}$/"  required>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 ">
+                            <div class="input-group require">
+                                <span class="input-group-addon">接单时间:</span>
+                                <input datetime-picker style="padding: 5px 0px;" class="col-sm-5" type="text" name="" ng-model="data.beginBillCreatedTimeStr" date-format=" HH:mm" required>
+                                <b style="float: left; display: inline-block; padding: 6px;">——</b>
+                                <input datetime-picker style="padding: 5px 0px;" class="col-sm-5" type="text" name="" ng-model="data.endBillCreatedTimeStr" date-format=" HH:mm" required>
+                            </div>
+                        </div>
+                </div>
+                <div class="row">
+                         <div class="col-sm-4 ">
+                            <div class="input-group require">
+                                <span class="input-group-addon">结单时间:</span>
+                                <input  style="padding: 5px 0px;" class="col-sm-12" type="text" ng-model="data.cutOffTimeStr" datetime-picker hour="23" minute='59' date-format=" HH:mm" required  />
+                            </div>            
+                        </div>
+                </div>
+                <div class="box-footer">
+                        <a class="btn btn-default" ng-back>取消</a>
+                        <button class="btn btn-normal" ng-disabled="form.$invalid" ng-click="save()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+</section>

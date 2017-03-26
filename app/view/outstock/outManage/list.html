@@ -1,0 +1,72 @@
+<section class="content">
+    <div class="box box-default" sl-load slt="{model:page.params , search: list}">
+        <div class="box-header">
+            <h3 class="box-title" ng-bind="page.title"></h3>
+            <sl-breadcrumb></sl-breadcrumb>
+        </div>
+        <div class="box-body">
+            <div class="box-operation">
+                <!-- <div class="operation-wrap">
+                    <a href="/sys/putaway/create" class="btn btn-normal"><i class="fa fa-plus"></i>新增</a>
+                </div> -->
+
+                <!-- 右侧快速查询及用户定义 -->
+                <div class="operation-quick">
+                    <div class="ui-quick-search" slt-quick></div> 
+
+                    <!-- 高级筛选 -->
+                    <button class="btn btn-op" sl-search="page.params.options.base" sl-search-change="search"><i class="fa fa-filter"></i>筛选</button>
+                    
+                    <button class="btn btn-op " sl-fields="page.fields.model" sl-fields-options="page.fields.options"><i class="fa fa-gear fa-only"></i>用户自定义</button>
+                </div>
+                
+            </div>
+            <!-- 表格数据区域 -->
+            <div class="box-data">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th ng-repeat="row in page.fields.model" slt-filter="row"></th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+
+                    <tbody ng-if="!data.length">
+                        <tr>
+                            <td class="nodata" colspan="{{page.fields.model.length+1}}">
+                                <span>暂无数据</span>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                    <tbody ng-if="data.length">
+                        <tr ng-repeat="row in data">
+
+                            <td ng-repeat="field in page.fields.model">
+                                <span>{{row[field.key]}}</span>
+                            </td>
+
+                            <td>
+                                <a href="/outstock/outManage/{{row['id']}}">查看</a>          
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>     
+                <div class="box-page row" ng-show="data.length" slt-pagination="page.params.pag"></div>
+            </div>
+        </div>
+
+
+            <div class="reminder">
+                    <p class="box-header reminder_header">提示</p>
+                    <div class="reminder_inner">
+                        <p class="inner">入库预约单确认后，系统将生成对应的入库单！仓库可进行收货,是否如确认？</p>
+                        <div class="btn_wrap">
+                            <button class="btn btn-primary pull-center btn1" ng-click="btn('sure')">确认</button>
+                            <button class="btn btn-primary pull-center btn2" ng-click="btn('cancel')">取消</button>
+                        </div>
+                    </div>    
+            </div>
+
+    </div>
+</section>

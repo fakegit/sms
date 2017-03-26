@@ -1,0 +1,175 @@
+<section class="content">
+    <form name="form">
+    <div class="box box-default" sl-load sl-view>
+        <div class="box-header">
+            <h3 class="box-title" ng-bind="page.title"></h3>
+            <sl-breadcrumb></sl-breadcrumb>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body" sl-tab>
+            <div title="基本信息">
+                <div class="box-data margin-bottom addon-right padding">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="input-group require">
+                                <span class="input-group-addon">盘点仓库</span>
+                                <select class="form-control" ng-model="data.warehouseId" ng-options="v.id as v.label for v in page.deps.warehouseId" required></select>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group require">
+                                <span class="input-group-addon">盘点类型</span>
+                                <select class="form-control" ng-model="data.type" ng-options="v.id as v.label for v in page.deps.type" required></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="input-group require">
+                                <span class="input-group-addon require">商家名称</span>
+                                <div class="suggest-box" auto-complete='page.ac.owner'>
+                                    <input type="text" class="form-control col-xs-9" ng-model="page.data.ownerName" placeholder="请输入商家名称" required />
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <span class="input-group-addon">盘点说明</span>
+                                <textarea class="form-control col-xs-9" ng-model="data.remark" maxlength="100" ng-maxlength="100" placeholder="100个字符以内"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div title="盘点明细" slt="{model:page.detail_params , search: detail.list}">
+                <p ng-if="!page.edit && !page.view">请先保存保存盘点计划，再编辑盘点明细</p>
+                <div ng-if="page.edit || page.view">
+                <div class="box-operation" ng-if="!page.view">
+                    <div class="operation-wrap">
+                        <a ng-click="detail.show()" class="btn btn-normal"><i class="fa fa-plus"></i>新增明细</a>
+                    </div>
+                </div>
+                <table class="table table-bordered table-striped w-d-last">
+                    <thead>
+                        <tr>
+                            <th ng-repeat="row in page.fields.detail_list" ng-bind="row.value" class="ng-binding ng-scope"></th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-if="!page.data.details.length">
+                        <tr>
+                            <td class="nodata" colspan="{{page.fields.detail_list.length + 1}}">
+                                <span>暂无数据</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody ng-if="page.data.details.length">
+                        <tr ng-repeat="row in page.data.details">
+                            <td ng-repeat="field in page.fields.detail_list">
+                                <span>{{row[field.key]}}</span>
+                            </td>
+                            <td>
+                                <a ng-confirm="{title:'提示',content:'确定删除盘点明细吗？',callback:detail.remove , params:row}"">删除</a>
+                            </tr>
+                    </tbody>
+                </table>
+                <div class="box-page row" ng-show="page.data.details.length" slt-pagination="page.detail_params.pag"></div>
+                </div>
+
+            </div>
+        </div>
+        <div class="box-footer">
+            <button class="btn btn-normal" ng-disabled="form.$invalid" ng-click="save()">保存</button>
+            <a class="btn btn-default" ng-back>返回</a>
+        </div>
+    </div>
+    </form>
+</section>
+
+<!-- 新增明细 -->
+
+<div ng-show="page.showDetail" class="modal fade in" style="display:block;">
+    <div class="modal-dialog" style="width:85%;max-height: 80%;">
+        <div class="modal-content overflow-modal box box-default">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="detail.close(false)"><span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">新增任务明细</h4>
+            </div>
+            <form name="form">
+                <div class="modal-body fs-small"  slt="{model:page.params , search: detail.search}">
+                    <div class="box-data addon-right padding">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">店铺名称</span>
+                                    <div class="suggest-box" auto-complete='page.ac.shop'>
+                                        <input type="text" class="form-control col-xs-9" ng-model="page.params.model.shopName" placeholder="请输入店铺名称"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">商品名称</span>
+                                    <div class="suggest-box" auto-complete=' page.ac.goods'>
+                                        <input type="text" class="form-control col-xs-9" ng-model="page.params.model.skuName" placeholder="请输入SKU"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">盘点库位</span>
+                                    <input type="text" class="form-control col-xs-3" ng-model="page.params.model.minLocationCode" maxlength="50" ng-maxlength="50" placeholder="50个字符以内">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">-</span>
+                                    <input type="text" class="form-control col-xs-3" ng-model="page.params.model.maxLocationCode" maxlength="50" ng-maxlength="50" placeholder="50个字符以内">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <button ng-click="detail.search(this)" class="btn btn-normal"><i class="fa fa-search"></i>查询</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <table class="table table-bordered table-striped w-d-last">
+                        <thead>
+                            <tr>
+                                <th ng-repeat="row in page.fields.detail_list" ng-bind="row.value" class="ng-binding ng-scope"></th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody ng-if="!data_detail.length">
+                            <tr>
+                                <td class="nodata" colspan="{{page.fields.detail_list.length + 1}}">
+                                    <span>暂无数据</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody ng-if="data_detail.length">
+                            <tr ng-class="{'disabled':row.disabled == '1'}" ng-repeat="row in data_detail">
+                                <td ng-repeat="field in page.fields.detail_list">
+                                    <span>{{row[field.key]}}</span>
+                                </td>
+                                <td>
+                                    <a sl-toggle="row.disabled" sl-toggle-options="{'0':'删除','1':'撤销删除'}" ng-click="detail.toggle(row)"></a>
+                                </tr>
+                        </tbody>
+                    </table>
+                    <div class="box-page row" ng-show="data_detail.length" slt-pagination="page.params.pag"></div>
+                </div>
+                <div class="modal-footer text-center">
+                    <button class="btn btn-primary pull-center" ng-click="detail.close(true)" ng-disabled="form.$invalid">确定</button>
+                    <a class="btn btn-default pull-center" ng-click="detail.close(false)">取消</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

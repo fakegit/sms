@@ -1,0 +1,196 @@
+<section class="content">
+    <form name="form">
+    <div class="box box-default" sl-load sl-view>
+        <div class="box-header">
+            <h3 class="box-title" ng-bind="page.title"></h3>
+            <sl-breadcrumb></sl-breadcrumb>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            
+            <div class="box-data margin-bottom addon-right padding">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="input-group require">
+                            <span class="input-group-addon">库位编码</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.code" ng-disabled="page.edit" maxlength="50" ng-maxlength="50" placeholder="50个字符以内" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group require">
+                            <span class="input-group-addon">所属仓库</span>
+                            <select class="form-control" ng-model="data.warehouseId" ng-options="v.id as v.label for v in page.deps.warehouseId" required></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">库位类别</span>
+                            <select class="form-control" ng-model="data.category" ng-options="v.id as v.label for v in page.deps.category"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">所属上架区</span>
+                            <select class="form-control" ng-model="data.putawayZoneId" ng-options="v.id as v.label for v in page.deps.putawayZoneId"></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">所属拣货区</span>
+                            <select class="form-control" ng-model="data.pickZoneId" ng-options="v.id as v.label for v in page.deps.pickZoneId"></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">物理库区</span>
+                            <input type="text" class="form-control col-xs-9" maxlength="50" ng-maxlength="50" ng-model="data.remark" placeholder="50个字符以内">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">上架顺序</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.putawaySeq" placeholder="只允许正整数" >
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">拣货顺序</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.pickSeq" placeholder="只允许正整数">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">库位类型</span>
+                            <select class="form-control" ng-model="data.type" ng-options="v.id as v.label for v in page.deps.type"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">周转需求</span>
+                            <select class="form-control" ng-model="data.demand" ng-options="v.id as v.label for v in page.deps.demand"></select>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">商品混放上限</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.maxSkuLimit" ng-pattern="/^\d+$/" placeholder="大于等于0的整数，0为无限制">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">批次混放上限</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.maxLotidLimit" ng-pattern="/^\d+$/" placeholder="大于等于0的整数，0为无限制">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">储存单位</span>
+                            <div class="sl-combo col-xs-12">
+
+                                <label ng-repeat="row in data.unitType">
+                                    <input type="checkbox" class="nr-checkbox" ng-model="row.checked" name="unitType" />
+                                    <i></i>
+                                    {{row.label}}
+                                </label>
+                                  
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">储存环境</span>
+                            <select class="form-control" ng-model="data.env" ng-options="v.id as v.label for v in page.deps.env"></select>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">X坐标</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.x" ng-pattern="/^\-?\d+\.?\d{0,2}$/" placeholder="允许两位小数，可以是负数">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">Y坐标</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.y" ng-pattern="/^\-?\d+\.?\d{0,2}$/" placeholder="允许两位小数，可以是负数">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">Z坐标</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.z" ng-pattern="/^\-?\d+\.?\d{0,2}$/" placeholder="允许两位小数，可以是负数">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">长(cm)</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.length" ng-pattern="/^\d+\.?\d{0,2}$/" placeholder="允许两位小数">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">宽(cm)</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.width" ng-pattern="/^\d+\.?\d{0,2}$/" placeholder="允许两位小数">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">高(cm)</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.height" ng-pattern="/^\d+\.?\d{0,2}$/" placeholder="允许两位小数">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                        <span class="input-group-addon">体积限制(cm<sup>3</sup>)</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.volumeCapacity" ng-pattern="/^\d+\.?\d{0,2}$/" placeholder="允许两位小数"">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">重量限制(kg)</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.weightCapacity" ng-pattern="/^\d+\.?\d{0,2}$/" placeholder="允许两位小数">
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                        <span class="input-group-addon">层数</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.layer" ng-pattern="/^[1-9]\d*$/" placeholder="只允许正整数">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">是否启用</span>
+                            <div sl-radio="data" sl-radio-model="status" class="sl-combo col-xs-12"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-footer">
+            <button class="btn btn-normal" ng-disabled="form.$invalid" ng-click="save()">保存</button>
+            <a class="btn btn-default" ng-back>返回</a>
+        </div>
+    </div>
+    </form>
+</section>

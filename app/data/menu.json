@@ -1,0 +1,33 @@
+[
+        {
+            "name": "入库",
+            "url": "/whin",
+            "icon":"fa-th",
+            "children": [
+                {"name":"入库单管理","icon":"fa-th","url":"/whin/order"},
+                {"name":"入库通知单管理","icon":"fa-th","url":"/whin/notice"},
+                {"name":"收货记录查询","icon":"fa-th","url":"/whin/receiving_record"},
+                {"name":"上架任务管理","icon":"fa-th","url":"/whin/shelve_task"},
+                {"name":"上架记录查询","icon":"fa-th","url":"/whin/shelve_record"},
+            ]
+        },
+        {
+            "name": "出库",
+            "url": "/whout",
+            "icon":"fa-th",
+            "children": []
+        },
+        {
+            "name": "基础资料管理",
+            "url": "/base",
+            "icon":"fa-th",
+            "children": [
+                {"name":"仓库管理","icon":"fa-th","url":"/base/warehouse"},
+                {"name":"库区管理","icon":"fa-th","url":"/base/area"},
+                {"name":"库位管理","icon":"fa-th","url":"/base/location"},
+                {"name":"商品管理","icon":"fa-th","url":"/base/goods"},
+                {"name":"组织管理","icon":"fa-th","url":"/base/org"},
+
+            ]
+        }
+    ]

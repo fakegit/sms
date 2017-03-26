@@ -1,0 +1,229 @@
+<section class="content">
+    <div class="box box-default" sl-load slt="{model:page.params , search: list}">
+        <div class="box-header">
+            <h3 class="box-title" ng-bind="page.title"></h3>
+            <sl-breadcrumb></sl-breadcrumb>
+        </div>
+        <div class="box-body">
+            <div class="box-data">
+                <form name="form">
+                    <div class="table table-bordered table-striped">
+                        <div class="col-sm-12 pad" style="padding-left: 0;">
+                            <div class="col-sm-2 " >
+                                <div class="input-group require">
+                                    <span class="input-group-addon">仓库:</span>
+                                    <select class="form-control" ng-model="data0.warehouseId" ng-options="v.id as v.label for v in page.deps.warehouseId" required></select>
+                                </div>                                   
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="input-group require">
+                                    <span class="input-group-addon">业务类型:</span>
+                                    <select class="form-control" ng-model="data0.businessType" ng-options="v.id as v.label for v in page.deps.businessType" required></select>
+                                </div>     
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="input-group require">
+                                    <span class="input-group-addon">运单类型:</span>
+                                    <select class="form-control" ng-model="data0.waybillType" ng-options="v.id as v.label for v in page.deps.waybillType" required></select>
+                                </div>     
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="input-group require">
+                                    <span class="input-group-addon">单据类型:</span>
+                                    <select class="form-control" ng-model="data0.billType" ng-options="v.id as v.label for v in page.deps.billType"  required></select>
+                                </div>     
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12" style="padding-left: 0;">
+                            <div class="col-sm-2 ">
+                                <div class="input-group ">
+                                    <span class="input-group-addon">商家:</span>
+                                    <select class="form-control" ng-model="data0.ownerId" ng-options="v.id as v.label for v in page.deps.ownerId" ></select>
+                                </div>        
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="input-group">
+                                    <span class="input-group-addon">店铺:</span>
+                                    <select class="form-control" ng-model="data0.shopId" ng-options="v.id as v.label for v in page.deps.shopId" ></select>
+                                </div>     
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="input-group">
+                                    <span class="input-group-addon">承运商:</span>
+                                    <select class="form-control" ng-model="data0.logisticsId" ng-options="v.id as v.logisticsName for v in page.deps.logisticsId" ></select>
+                                </div>     
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="input-group">
+                                    <span class="input-group-addon">SKU数量:</span>
+                                    <input placeholder="1" style="padding: 5px 0px;" class="col-sm-4" type="text"  ng-model="data0.beginSkuQuantity">
+                                    <!-- <b style="float: left; display: inline-block; padding: 6px;">——</b> -->
+                                    <input  placeholder="3" style="float: right; padding: 5px 0px;" class="col-sm-4" type="text"  ng-model="data0.endSkuQuantity">
+                                </div>     
+                            </div>
+
+                            <div class="col-sm-2">
+                                <div class="input-group">
+                                    <!-- <span class="input-group-addon">SKU:</span>
+                                    <input style=" padding: 5px 0px;" class="col-sm-10" type="text"  ng-model="data0.endSkuQuantity">  -->
+
+                                    <span class="input-group-addon" style="padding-left: 24px;">SKU:</span>
+                                    <!-- <div class="suggest-box" auto-complete='sku_options'> -->
+                                    <div class="suggest-box" auto-complete='sku_options'>
+
+                                        <input type="text" class="form-control col-xs-9" ng-model="data0.skuCode" placeholder="请输入SKU"/>
+                                    </div>
+                                <!-- errorMsg-->
+                                    <!-- <span style="color:red"  ng-show="form.hsCode.$dirty && form.hsCode.$invalid || !page.verify.hsCode">
+                                        <span ng-show="form.hsCode.$error"># 请按照提示输入/选择正确的HS编码</span>
+                                    </span> -->
+
+
+                                </div>     
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 pad" style="padding-left: 0;">
+                            <div class="col-sm-2 ">
+                                <div class="input-group ">
+                                    <span class="input-group-addon">商品数量:</span>
+                                    <input placeholder="1" style="padding: 5px 0px;" class="col-sm-4" type="text"  ng-model="data0.beginQuantity">
+                                    <!-- <b style="float: left; display: inline-block; padding: 6px;">——</b> -->
+                                    <input placeholder="10" style="float: right; padding: 5px 0px;" class="col-sm-4"  type="text"  ng-model="data0.endQuantity">
+                                </div>       
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">接单时间:</span>
+                                    <input datetime-picker date-format="yyyy-MM-dd HH:mm" style="padding: 5px 0px;" class="col-sm-5" type="text" name="" ng-model="data0.beginOrderTime" placeholder="开始接单时间">
+                                    <!-- <b style="float: left; display: inline-block; padding: 6px;">——</b> -->
+                                    <input datetime-picker date-format="yyyy-MM-dd HH:mm" style="float: right; padding: 5px 0px;" class="col-sm-5" type="text" name="" ng-model="data0.endOrderTime" placeholder="最后接单时间">
+                                </div>     
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="input-group">
+                                    <span class="input-group-addon">订单重量:</span>
+                                    <input placeholder="1" style="padding: 5px 0px;" class="col-sm-4" type="text" name="" ng-model="data0.beginWeight">
+                                    <!-- <b style="float: left; display: inline-block; padding: 6px;">——</b> -->
+                                    <input placeholder="10" style="float: right; padding: 5px 0px;" class="col-sm-4" type="text" name="" ng-model="data0.endWeight">
+                                </div>     
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12" style="padding-left: 0;">
+                            <div class="col-sm-2">
+                                <div class="input-group ">
+                                    <span class="input-group-addon">是否有发票:</span>
+                                    <select class="form-control" ng-model="data0.hasInvoice" ng-options="v.id as v.label for v in page.fields0.options[0].hasInvoice" ></select>
+                                </div>
+                                        
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon">卖家备注:</span>
+                                   <select style="margin-right: 10px;" class="col-sm-4" ng-model="data0.sellerRemarkFlag" ng-options="v.id as v.label for v in page.fields0.options[1].sellerRemarkFlag"  ></select>
+                                    <input style="padding: 5px 0px;" class="col-sm-7" type="text" name="" ng-model="data0.sellerRemark" maxlength="200">
+                                </div>     
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="input-group">
+                                    <span class="input-group-addon">买家备注:</span>
+                                    <select style="margin-right: 10px;" class="col-sm-4" ng-model="data0.buyerRemarkFlag"ng-model="data0.sellerRemarkFlag" ng-options="v.id as v.label for v in page.fields0.options[2].buyerRemarkFlag"  ></select>
+                                    <input style="padding: 5px 0px;" class="col-sm-7" type="text" name="" ng-model="data0.buyerRemark">
+                                </div>     
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="input-group">
+                                    <button class="btn btn-normal"  ng-disabled="form.$invalid"  style="margin-left: 100px;" ng-click='waveSearch()'>搜索</button>
+                                </div>     
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 pad" style="padding-left: 0;">
+                            <div class="col-sm-2 ">
+                                <div class="input-group ">
+                                    <span class="input-group-addon">单号:</span>
+                                    <input class="col-sm-12" style="padding: 5px 0px;" type="text" name="" ng-model="data0.orderNo" maxlength="50" placeholder="客户单号/出库单号/运单号">
+                                </div>
+                                        
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">区域:</span>
+                                    <!-- 地区选择器指令 -->
+                                    <div  sl-area="page.deps.area" sl-area-model="data0" sl-area-option = "{city:'city',province:'province', district:'cDistrict'}"  sl-area-lv=2>
+                                        
+                                    </div>
+
+                                    <!-- <div  sl-area="page.deps.area" sl-area-model="data0" >
+                                        
+                                    </div> -->
+                                </div>     
+                            </div>
+
+                        </div>
+
+                    </div>
+                </form>
+                <div class="col-sm-10"  style="clear: both; border:1px solid #ccc; overflow:hidden;">
+                    
+                    <div class="col-sm-6 pad" style="padding-left: 0;">
+                        <div class="col-sm-5 ">
+                            <div class="input-group require">
+                            <!-- 波次规则下拉选项未提供codeId -->
+
+                                <span class="input-group-addon">波次规则:</span>
+                                <select class="form-control" ng-model="data0.ruleId" ng-options="v.id as v.ruleName for v in ruleList" ></select>
+                            </div>
+                        </div>
+                        <div class="col-sm-5 ">
+                            <div class="input-group require">
+                                <span class="input-group-addon">拣货方式:</span>
+                                <select class="form-control" ng-model="data0.pickType" ng-options="v.id as v.label for v in page.deps.pickType" ></select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 pad"">
+                        <div class="col-sm-6 ">
+                           <button style="padding: 7px;" ng-click="waveCreate()">创建波次</button>
+                        </div>
+                        
+                    </div>
+                    <div class="col-sm-12 pad" style="padding-left: 0;">
+                        <div class="col-sm-6 ">
+                            <div class="input-group ">
+                                <span class="input-group-addon">订单数量:</span>
+                                <input style="padding: 5px 0px;" class="col-sm-6" type="text" ng-model="data0.orderQty">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th ng-repeat="row in page.fields.options" slt-filter="row"></th>
+                        </tr>
+                    </thead>
+                    <tbody ng-if="!data.length">
+                        <tr>
+                            <td class="nodata" colspan="{{page.fields.options.length}}">
+                                <span>暂无数据</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody ng-if="data.length">
+                        <tr ng-repeat="row in data">
+                            <td ng-repeat="field in page.fields.options">
+                                <span>{{row[field.key]}}</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="box-page row" ng-show="data.length" slt-pagination="page.params.pag"></div>
+            </div>
+        </div>
+    </div>
+</section>

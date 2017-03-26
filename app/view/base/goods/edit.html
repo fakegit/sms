@@ -1,0 +1,382 @@
+<section class="content">
+    <form name="form">
+        <div class="box box-default" sl-load sl-view>
+            <div class="box-header">
+                <h3 class="box-title" ng-bind="page.title"></h3>
+                <sl-breadcrumb></sl-breadcrumb>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body" sl-tab>
+                <div title="基本信息">
+                    <div class="box-data margin-bottom addon-right padding">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="input-group require">
+                                    <span class="input-group-addon">中文名称</span>
+                                    <input type="text" class="form-control col-xs-9" ng-model="data.skuName" maxlength="200" ng-maxlength="200" placeholder="200个字符以内" required>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">英文名称</span>
+                                    <input type="text" name="name" class="form-control col-xs-9" ng-model="data.skuNameEn" maxlength="200" ng-maxlength="200" placeholder="200个字符以内">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group require">
+                                    <span class="input-group-addon">商品编码</span>
+                                    <input type="text" name="name" class="form-control col-xs-9" ng-disabled="page.edit" ng-model="data.skuCode" maxlength="50" ng-maxlength="50" placeholder="50个字符以内" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="input-group require">
+                                    <span class="input-group-addon">所属商家</span>
+                                    <select class="form-control" ng-model="data.ownerId" ng-options="v.id as v.label for v in page.deps.ownerId" required></select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">商品分类</span>
+                                    <select class="form-control" ng-model="data.goodsCategory" ng-options="v.id as v.label for v in page.deps.goodsCategory"></select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">商品类型</span>
+                                    <select class="form-control" ng-model="data.goodsType" ng-options="v.id as v.label for v in page.deps.goodsType"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">单位</span>
+                                    <input type="text" class="form-control col-xs-9" ng-model="data.unit" ng-maxlength="200" placeholder="">
+                                    <!-- <select class="form-control" ng-model="data.unit" ng-options="v.id as v.label for v in page.deps.unit"></select> -->
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">商品规格</span>
+                                    <input type="text" class="form-control col-xs-9" ng-model="data.standard" maxlength="200" ng-maxlength="200" placeholder="200个字符以内">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">批次模板</span>
+                                    <select class="form-control" ng-model="data.batchId" ng-options="v.id as v.label for v in page.deps.batchId"></select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">商品条码</span>
+                                    <input type="text" class="form-control col-xs-9" ng-model="data.barcode" maxlength="50" ng-maxlength="50" placeholder="50个字符以内">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">商品条码1</span>
+                                    <input type="text" class="form-control col-xs-9" ng-model="data.barcode1" maxlength="50" ng-maxlength="50" placeholder="50个字符以内">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">商品条码2</span>
+                                    <input type="text" class="form-control col-xs-9" ng-model="data.barcode2" maxlength="50" ng-maxlength="50" placeholder="50个字符以内">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">流转类型</span>
+                                    <select class="form-control" ng-model="data.transferType" ng-options="v.id as v.label for v in page.deps.transferType"></select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">进价</span>
+                                    <input type="text" class="form-control col-xs-9" ng-model="data.purchasePrice" ng-maxlength="200" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">售价</span>
+                                    <input type="text" class="form-control col-xs-9" ng-model="data.sellPrice" ng-maxlength="200" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">批次管理</span>
+                                    <div sl-radio="data" sl-radio-model="isBatch" class="sl-combo col-xs-12"></div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">效期管理</span>
+                                    <div sl-radio="data" sl-radio-model="isShelfLifeWarn" class="sl-combo col-xs-12">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-data margin-bottom addon-right padding split">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">商品品牌</span>
+                                    <input type="text" class="form-control col-xs-9" ng-model="data.brand" maxlength="30" ng-maxlength="30" placeholder="30个字符以内">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">储存环境</span>
+                                    <select class="form-control" ng-model="data.env" ng-options="v.id as v.label for v in page.deps.env"></select>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">保质期天数</span>
+                                    <input type="text" name="name" class="form-control col-xs-9" ng-model="data.expirationDay" ng-pattern="/^\d+\.?\d{0,2}$/" placeholder="数字，允许两位小数" >
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">入库效期天数</span>
+                                    <input type="text" class="form-control col-xs-9" ng-model="data.inDay" ng-pattern="/^\d+$/" placeholder="只允许大于零的整数">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">出库效期天数</span>
+                                    <input type="text" name="name" class="form-control col-xs-9" ng-model="data.outDay" ng-pattern="/^\d+$/" placeholder="只允许大于零的整数">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">预警天数</span>
+                                    <input type="text" name="name" class="form-control col-xs-9" ng-model="data.alertDay" ng-pattern="/^\d+$/" placeholder="只允许大于零的整数">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">库存上限</span>
+                                    <input type="text" class="form-control col-xs-9" ng-model="data.qtymax" ng-pattern="/^\d+$/" placeholder="只允许大于零的整数">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">库存下限</span>
+                                    <input type="text" name="name" class="form-control col-xs-9" ng-model="data.qtymin" ng-pattern="/^\d+$/" placeholder="只允许大于零的整数">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">HS编码</span>
+                                    <input type="text" name="name" class="form-control col-xs-9" ng-model="data.hsCode" ng-maxlength="50" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon">备注说明</span>
+                                    <textarea class="form-control col-xs-9" ng-maxlength="200" placeholder="" ng-model="data.remark"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">商品状态</span>
+                                    <div sl-radio="data" sl-radio-model="status" sl-radio-option="[{label:'启用', id : 1 },{label:'禁用', id : 0 }]" class="sl-combo col-xs-12"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div title="计量单位配置">
+                    <div class="box-operation">
+                        <div class="operation-wrap">
+                            <a ng-click="unit.create()" class="btn btn-normal"><i class="fa fa-plus"></i>新增</a>
+                        </div>
+                    </div>
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>单位级别</th>
+                                <th>单位名称</th>
+                                <th>数量</th>
+                                <th>长</th>
+                                <th>宽</th>
+                                <th>高</th>
+                                <th>体积</th>
+                                <th>毛重</th>
+                                <th>净重</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="row in data.basePackUnitVOs">
+                                <td ng-bind="row.id"></td>
+                                <td ng-bind="row.unitId | read:page.deps.unitId"></td>
+                                <td ng-bind="row.unitDesc"></td>
+                                <td ng-bind="row.qty"></td>
+                                <td ng-bind="row.length"></td>
+                                <td ng-bind="row.width"></td>
+                                <td ng-bind="row.height"></td>
+                                <td ng-bind="row.volume"></td>
+                                <td ng-bind="row.grossWeight"></td>
+                                <td ng-bind="row.netWeight"></td>
+                                <td>
+                                    <a ng-click="unit.edit(row)">编辑</a>
+                                    <a ng-click="unit.remove($index)">删除</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+<!--                 <div title="规则配置">
+                    <div class="box-data margin-bottom addon-right padding">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">上架规则</span>
+                                    <input type="text" class="form-control col-xs-9" ng-maxlength="200" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">波次规则</span>
+                                    <input type="text" name="name" class="form-control col-xs-9" ng-maxlength="200" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">拣货规则</span>
+                                    <input type="text" name="name" class="form-control col-xs-9" ng-maxlength="50" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">补货规则</span>
+                                    <input type="text" class="form-control col-xs-9" ng-maxlength="200" placeholder="">
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="input-group">
+                                    <span class="input-group-addon">质检规则</span>
+                                    <input type="text" name="name" class="form-control col-xs-9" ng-maxlength="200" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+            <div class="box-footer">
+                <button class="btn btn-normal" ng-disabled="form.$invalid" ng-click="save()">保存</button>
+                <a class="btn btn-default" ng-back>返回</a>
+            </div>
+        </div>
+    </form>
+</section>
+<!-- 新增/编辑 计量单位 -->
+<script type="text/ng-template" id="unit/edit.html">
+    <div class="modal fade in" style="display:block;">
+        <div class="modal-dialog">
+            <div class="modal-content overflow-modal box box-default" sl-view>
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="close(false)"><span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title" ng-bind="page.title"></h4>
+                </div>
+                <form name="form">
+                    <div class="modal-body">
+                        <div class="box-data addon-right padding">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="input-group require">
+                                        <span class="input-group-addon">单位级别</span>
+                                        <select class="form-control" ng-model="data.unitId" required ng-options="v.id as v.label for v in page.deps.unitId"></select>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="input-group require">
+                                        <span class="input-group-addon">单位名称</span>
+                                        <input type="text" class="form-control col-xs-9" ng-model="data.unitDesc" maxlength="30" ng-maxlength="200" placeholder="30个字符以内" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="input-group require">
+                                        <span class="input-group-addon">数量</span>
+                                        <input type="text" class="form-control col-xs-9" ng-model="data.qty" ng-pattern="/^[1-9]\d*$/" placeholder="只允许正整数" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">长</span>
+                                        <input type="text" class="form-control col-xs-9" ng-model="data.length" ng-pattern="/^\d+\.?\d{0,2}$/" placeholder="请输入长度，允许两位小数">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">宽</span>
+                                        <input type="text" class="form-control col-xs-9" ng-model="data.width" ng-pattern="/^\d+\.?\d{0,2}$/" placeholder="请输入宽度，允许两位小数">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">高</span>
+                                        <input type="text" class="form-control col-xs-9" ng-model="data.height" ng-pattern="/^\d+\.?\d{0,2}$/" placeholder="请输入高度，允许两位小数">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">体积</span>
+                                        <input type="text" class="form-control col-xs-9" ng-model="data.volume" ng-pattern="/^\d+\.?\d{0,2}$/" placeholder="请输入体积，允许两位小数">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">毛重</span>
+                                        <input type="text" class="form-control col-xs-9" ng-model="data.grossWeight" ng-pattern="/^\d+\.?\d{0,2}$/" placeholder="请输入毛重，允许两位小数">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">净重</span>
+                                        <input type="text" class="form-control col-xs-9" ng-model="data.netWeight" ng-pattern="/^\d+\.?\d{0,2}$/" placeholder="请输入净重，允许两位小数">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer text-center">
+                        <button class="btn btn-primary pull-center" ng-click="close(true)" ng-disabled="form.$invalid">确定</button>
+                        <a class="btn btn-default pull-center" ng-click="close(false)">取消</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</script>

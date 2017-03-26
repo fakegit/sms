@@ -1,0 +1,109 @@
+/**
+ * 自定义字段 弹窗
+ */
+
+.modal-custom-fields {
+    .modal-title {
+        font-size: 16px;
+    }
+    label {
+        font-size: 14px;
+        color: #666;
+        font-weight: normal;
+        padding: 5px 20px;
+    }
+    i {
+        width: 18px;
+    }
+    input[type=checkbox] + i.fa:before {
+        content: "\f096";
+        font-size: 15px;
+    }
+    input[type=checkbox]:checked + i.fa:before {
+        content: "\f046";
+        color: #138ed4;
+    }
+    p {
+        padding: 10px;
+        vertical-align: middle;
+        color: #264663;
+        border: 1px solid #7AB1DE;
+        background: #D2E7F7;
+    }
+}
+
+.modal-custom-fields p {
+    padding: 10px;
+    vertical-align: middle;
+    color: #264663;
+    border: 1px solid #7AB1DE;
+    background: #D2E7F7;
+}
+
+.custom-fields {
+    ul {
+        height: 236px;
+        border: 1px solid #d2d6de;
+        overflow-y: auto;
+        li {
+            padding-left: 12px;
+            height: 36px;
+            line-height: 36px;
+            position: relative;
+            border: 1px solid #fff;
+            outline: none;
+
+
+            .menu{
+                float:right;display: block;
+            }
+
+            a {
+                // position: absolute;
+                height: 34px;
+                width: 34px;
+                line-height: 34px;
+                text-align: center;
+/*                right: 0;
+                top: 0;*/
+                cursor: pointer;
+                display: none;
+                float:left;
+            }
+            &:hover {
+                border-color: #138ed4;
+                color: #138ed4;
+                a {
+                    color: #bbb;
+                    display: block;
+                    // background-color: #138ed4;
+                }
+            }
+
+            &.select a{
+                display: block;
+                color: #138ed4;
+                
+            }
+
+        }
+
+        &.remove li a{
+            &:hover{
+                background-color: #138ed4;
+                color:#fff;
+            }
+        }
+    }
+    
+    input{
+        height:36px;line-height: 36px;
+        padding:0 8px;
+        width:100%;
+        outline: none;
+    }
+    input + ul{
+        height:200px;
+        border-top:none;
+    }
+}

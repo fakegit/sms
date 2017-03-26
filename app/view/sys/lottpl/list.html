@@ -1,0 +1,48 @@
+<section class="content">
+    <div class="box box-default" sl-load slt="{model:page.params , search: list}">
+        <div class="box-header">
+            <h3 class="box-title" ng-bind="page.title"></h3>
+            <sl-breadcrumb></sl-breadcrumb>
+        </div>
+        <div class="box-body">
+            <div class="box-operation">
+                <div class="operation-wrap">
+                    <a href="/sys/lottpl/create" class="btn btn-normal"><i class="fa fa-plus"></i>新增</a>
+                </div>
+            </div>
+            <div class="box-data">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th ng-repeat="row in page.fields.options" slt-filter="row"></th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-if="!data.length">
+                        <tr>
+                            <td class="nodata" colspan="{{page.fields.options.length+1}}">
+                                <span>暂无数据</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody ng-if="data.length">
+                        <tr ng-repeat="row in data">
+                            <td ng-repeat="field in page.fields.options">
+                                <!-- <a href="http://baidu.com" ng-if="field.key == 'id'">{{row[field.key]}}</a> -->
+                                <span ng-if="field.key!='id'">{{row[field.key]}}</span>
+                                <!-- <span ng-if="field.key=='createdTime'">{{row[field.key]}}</span> -->
+                                <!-- <span ng-if="field.key=='status'">{{row[field.key] | toggle}}</span> -->
+                            </td>
+                            <td>
+                                <a href="/sys/lottpl/{{row['id']}}">查看</a>
+                                <a href="/sys/lottpl/{{row['id']}}/edit">编辑</a>
+                                <!-- <a sl-toggle="row['status']" ng-click="toggle(row)"></a> -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="box-page row" ng-show="data.length" slt-pagination="page.params.pag"></div>
+            </div>
+        </div>
+    </div>
+</section>

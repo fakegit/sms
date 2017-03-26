@@ -1,0 +1,94 @@
+
+.navbar-menu{
+    float:left;
+    
+    li{
+        display: inline-block;
+        float:left;
+    }
+
+   
+
+    a{
+        display: block;
+        height: 50px;
+        line-height: 50px;
+        outline: 0 none;
+        padding: 0 20px;
+        text-align: center;
+        color: #fff;
+        font-size:14px;
+        min-width:120px;
+        cursor: pointer;
+    }
+
+    li.active a,
+    li a:hover
+    {
+        background: #31749b;
+    }
+}
+
+.sidebar-toggle {
+    background-color: #2c3b41;
+    padding: 5px 15px;
+    font-family: fontAwesome;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    i {
+        transform: rotate(90deg);
+    }
+}
+
+.sidebar-collapse .sidebar-toggle i{
+    transform: rotate(0deg);
+}
+
+.dropdown{
+    ul{
+        display: none;
+    }
+
+    &:hover ul{
+        display: block;
+    }
+
+    .dropmenu li a{
+        color: #ffffff;
+        font-size: 14px;
+        line-height: 35px;
+        display: block;
+    }
+}
+.reminder {
+    position: absolute;
+    left: 50%;
+    margin-left: -20%;
+    top: 50%;
+    background: #fff;
+    display:none;
+    width:40%;
+    height:300px;
+    border:1px solid #ccc;
+   .reminder_header {
+        text-align:center;
+        background: #ccc;
+        font-size:20px;
+   }
+   .reminder_inner {
+        padding: 12px 76px;
+   }
+   .inner { 
+        font-size:20px;
+   }
+   .btn_wrap {
+        margin-top:36px;
+        .btn1 {
+            margin-left:150px;
+        }
+        .btn2 {
+            margin-left:90px;
+        }
+   }
+}

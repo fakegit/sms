@@ -1,0 +1,81 @@
+<section class="content">
+    <div class="box box-default" sl-load slt="{model:page.params , search: list}">
+        <div class="box-header">
+            <h3 class="box-title" ng-bind="page.title"></h3>
+            <sl-breadcrumb></sl-breadcrumb>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <!-- 功能操作区 -->
+            <div class="box-operation">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <div class="input-group">
+                            <span class="input-group-addon">仓库</span>
+                            <select class="form-control" ng-model='data.warehouseId' ng-options='v.id as v.name for v in page.deps.warehouseId'></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="input-group">
+                             <span class="input-group-addon">快递公司:</span>
+                            <select class="form-control" ng-model="data.logisticsId" ng-options="v.id as v.logisticsName for v in page.deps.logisticsName" required ng-change='change()' ></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="input-group">
+                            <span class="input-group-addon">框号:</span>
+                            <input class="form-control" ng-model='data.code' type="text" />
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <button class="btn btn-normal" ng-click='build()'>生产框号</button>
+                    </div>
+                    <div class="col-sm-2">
+                        <div class="input-group">
+                            <span class="input-group-addon">单号</span>
+                            <input type="text" name="" class="form-control col-xs-9" ng-model="data.waybillNo" maxlength="20" ng-keypress="checkDocumentNo($event)" id="documentNo" ng-maxlength="20" placeholder="快递单号" set-focus ng-change="checkChange()">
+                            <!-- <span style="color:red" ng-show="page.tip.documentNo">
+                                <span>{{page.tip.documentNo}}</span>
+                                <span>1122</span>
+
+                            </span>   -->
+                        </div>
+                    </div>
+                    <div class="col-sm-1">
+                        <div class="input-group">
+                            <span class="input-group-addon" style="color: red;padding-top: 10px;" ng-bind ='data.speak'></span>
+                        </div>   
+                    </div>
+                </div>
+            </div>
+            <div class="box-operation">
+                    <div class="operation-wrap">
+                        <a class="btn btn-normal" ng-click = 'printer()'>打印</a>
+                    </div>
+            </div>
+            <div class="box-data" ng-if='data.List.length'>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th>快递单号</th>
+                        <th>扫描时间</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="row in data.List">
+                        <td ng-repeat="field in page.fields.options">
+                            <span>{{row[field.key]}}</span>
+                        </td>
+                        <td>
+                            <a href="javascript:void(0)" ng-click='del(row)' >删除</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+               <!--  <div class="box-page row" ng-show="data.length" slt-pagination="page.params.pag"></div> -->
+            </div>
+        </div>
+    </div>
+</section>

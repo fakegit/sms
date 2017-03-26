@@ -1,0 +1,189 @@
+<section class="content">
+    <form name="form">
+        <div class="box box-default" sl-load  slt="{model:page.params , search: list}">
+            <div class="box-header">
+                <h3 class="box-title" ng-bind="page.title">盘点登记</h3>
+                <sl-breadcrumb></sl-breadcrumb>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="box-data addon-right padding">
+                    <div class="row ">
+                        <div class="col-sm-3">
+
+                        </div>
+                    </div>
+                </div>
+                    <div class="box-data addon-right padding ">
+                            <div class="col-sm-12 pad">
+                                <div class="col-sm-3 ">
+                                    <span>盘点仓库：</span>
+                                    <span ng-bind="data.plan.warehouseName"></span>
+                                </div>
+                                <div class="col-sm-3">
+                                    <span>盘点计划单号：</span>
+                                    <span ng-bind="data.plan.code"></span>
+                                </div>
+                                <div class="col-sm-3">
+                                    <span>盘点类型：</span>
+                                    <span ng-bind="data.plan.typeName"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 pad">
+                                <div class="col-sm-3">
+                                    <span>盘点任务明细：</span>
+                                    <span ng-bind="data.plan.planDetailNum"></span>
+                                </div>
+                                <div class="col-sm-3">
+                                    <span>已盘任务明细：</span>
+                                    <span ng-bind="data.plan.countedDetailNum"></span>
+                                </div>
+                                <div class="col-sm-3">
+                                    <span>盘点库位总数：</span>
+                                    <span ng-bind="data.plan.planLocNum"></span>
+                                </div>
+                                <div class="col-sm-3">
+                                    <span>已盘库位总数：</span>
+                                    <span ng-bind="data.plan.countedLocNum"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 pad">
+                                <div class="col-sm-12">
+                                    <span>备注：</span>
+                                    <span ng-bind="data.plan.remark"></span>
+                                </div>
+                            </div>
+                    </div>
+                <div class="box-data">
+                        <div class="col-sm-12 pad">
+                            <div class="box-data split"></div>
+                        </div>
+                        <form name="form">
+                       <div class="col-sm-12 pad">
+                           <div class="col-sm-4">
+                               <div class="input-group">
+                                   <span class="input-group-addon">库位编码</span>
+                                   <input type="text" class="form-control col-xs-9" ng-model="params.locationCode" ng-blur="changeValue()" placeholder="扫描/输入库位编码">
+                               </div>
+                           </div>
+                           <div class="col-sm-4">
+                               <div class="input-group">
+                                   <span class="input-group-addon">商品编码</span>
+                                   <input type="text" class="form-control col-xs-9" ng-model="params.skuCode" ng-blur="changeValue()" placeholder="扫描/输入商品名称">
+                               </div>
+                           </div>
+                           <div class="col-sm-4">
+                               <div class="input-group">
+                                   <span class="input-group-addon">系统批号</span>
+                                   <select class="form-control" ng-model="params.lot" ng-options="v.lot as v.lot for v in page.lots"></select>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="col-sm-12 pad">
+                           <div class="col-sm-4" ng-if="data.plan.typeName=='明盘'">
+                               <div class="input-group">
+                                   <span class="input-group-addon">库存数量</span>
+                                   <input type="text" class="form-control col-xs-9" ng-model="params.quantity" disabled>
+                               </div>
+                           </div>
+                           <div class="col-sm-4">
+                               <div class="input-group">
+                                   <span class="input-group-addon">盘点数量</span>
+                                   <input type="text" class="form-control col-xs-9" ng-model="params.countQuantity" placeholder="输入盘点数量" required>
+                               </div>
+                           </div>
+                       </div>
+
+                      <div class="col-sm-12 pad">
+                        <div class="col-sm-2">
+                            <span>商家名称：</span>
+                            <span ng-bind="data.plan.ownerName"></span>
+                        </div>
+                        <div class="col-sm-2">
+                            <span>店铺名称：</span>
+                            <span ng-bind="data.plan.shopName"></span>
+                        </div>
+                        <div class="col-sm-2">
+                            <span>商品名称：</span>
+                            <span ng-bind="params.skuName"></span>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-12 pad">
+                          <div class="col-sm-4">
+
+                          <button class="btn btn-normal" ng-disabled="form.$invalid" ng-click="checkBe()">确定盘点</button>
+                      </div>
+                      <form>
+
+                <div class="col-sm-12 pad">
+                    <div class="box-data split"></div>
+                </div>
+                    <div class="col-sm-12 pad">
+                        <h5>盘点记录</h5>
+
+                    </div>
+
+                    <table class="table table-bordered table-striped">
+                        <thead>
+                        <tr>
+                            <th ng-repeat="row in page.fields.options" slt-filter="row"></th>
+                        </tr>
+                        </thead>
+                        <tbody ng-if="!page.fields.model.length">
+                        <tr>
+                            <td class="nodata" colspan="{{page.fields.options.length}}">
+                                <span>暂无数据</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tbody ng-if="page.fields.model.length">
+                        <tr ng-repeat="row in page.fields.model">
+                            <td>{{$index+1}}</td>
+                            <td>{{row.locationCode}}</td>
+                            <td>{{row.ownName}}</td>
+                            <td>{{row.shopName}}</td>
+                            <td>{{row.skuName}}</td>
+                            <td>{{row.skuCode}}</td>
+                            <td>{{row.customerLot}}</td>
+                            <td>{{row.produceDate}}</td>
+                            <td>{{row.expiryDate}}</td>
+                            <td>{{row.storageDate}}</td>
+                            <td>{{row.quantity}}</td>
+                            <td>{{row.countQuantity}}</td>
+                            <td>{{row.quantity-row.countQuantity}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </form>
+</section>
+
+
+
+<script type="text/ng-template" id="countRegister.html">
+    <div class="modal fade in" style="display:block;">
+        <div class="modal-dialog">
+            <div class="modal-content overflow-modal box box-default" sl-view >
+                <div class="modal-header">
+                    <button type="button" class="close" ng-click="close(false)"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body" >
+                <span>该盘点任务明细已被盘点登记：</span>
+                <p><span>盘点人：{{data.operator}}</span></p>
+                <p><span>盘点时间：{{data.countTime}}</span></p>
+                <p><span>盘点数量：{{data.countQuantity}}</span></p>
+                <p><span>是否覆盖重盘？</span></p>
+                </div>
+
+                <div class="modal-footer text-center">
+                    <button class="btn btn-primary pull-center" ng-click="close(true)">确定</button>
+                    <a class="btn btn-default pull-center" ng-click="close(false)">取消</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

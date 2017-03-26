@@ -1,0 +1,267 @@
+<section class="content">
+    <form name="form">
+    <div class="box box-default" sl-load sl-view>
+        <div class="box-header">
+            <h3 class="box-title" ng-bind="page.title"></h3>
+            <sl-breadcrumb></sl-breadcrumb>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="box-data margin-bottom addon-left padding">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">入库预约单号</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.inAsnVO.orderNo" maxlength="50" ng-maxlength="50" required placeholder="中文、字母或数字，50字符以内">
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">客户单号</span>
+                            <input type="text" name="name" class="form-control col-xs-9" ng-disabled="page.edit" ng-model="data.inAsnVO.customerOrderNo" maxlength="20" ng-maxlength="20" required placeholder="字母或数字，20字符以内">
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">单据类型</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.inAsnVO.typeName" maxlength="50" ng-maxlength="50" required placeholder="中文、字母或数字，50字符以内">
+                        </div>
+                    </div>
+                     <div class="col-sm-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">业务类型</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.inAsnVO.typeName" maxlength="50" ng-maxlength="50" required placeholder="中文、字母或数字，50字符以内">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">货主名称</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.inAsnVO.baseOwner.name" maxlength="50" ng-maxlength="50" required placeholder="中文、字母或数字，50字符以内">
+                        </div>
+                    </div> 
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">店铺名称</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.inAsnVO.baseShop.name" maxlength="50" ng-maxlength="50" required placeholder="中文、字母或数字，50字符以内">
+                        </div>
+                    </div> 
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">单据来源</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.inAsnVO.orderFrom" maxlength="50" ng-maxlength="50" required placeholder="中文、字母或数字，50字符以内">
+                        </div>
+                    </div> 
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">仓库名称</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.inAsnVO.baseWarehouse.warehouseName" maxlength="50" ng-maxlength="50" required placeholder="中文、字母或数字，50字符以内">
+                        </div>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">SKU数量</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.inAsnVO.quantity" maxlength="50" ng-maxlength="50" required placeholder="中文、字母或数字，50字符以内">
+                        </div>
+                    </div> 
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">预期到货时间</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.inAsnVO.planArrivalDate" maxlength="50" ng-maxlength="50" required placeholder="中文、字母或数字，50字符以内">
+                        </div>
+                    </div> 
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">入库状态</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.inAsnVO.statusName" maxlength="50" ng-maxlength="50" required placeholder="中文、字母或数字，50字符以内">
+                        </div>
+                    </div> 
+                </div>
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">创建人</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.inAsnVO.createdBy" maxlength="50" ng-maxlength="50" required placeholder="中文、字母或数字，50字符以内">
+                        </div>
+                    </div> 
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">创建时间</span>
+                           <input type="text" class="form-control col-xs-9" ng-model="data.inAsnVO.createdTime" maxlength="50" ng-maxlength="50" required placeholder="中文、字母或数字，50字符以内">
+                        </div>
+                    </div> 
+                </div>
+                 <div class="row" style="border-bottom: 1px dashed">
+                    <div class="col-sm-3">
+                        <div class="input-group">
+                            <span class="input-group-addon">备注</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.inAsnVO.remark" maxlength="50" ng-maxlength="50" required placeholder="中文、字母或数字，50字符以内">
+                        </div>
+                    </div> 
+                </div>
+
+
+                <div class="row" style="padding: 20px 0;">
+                    <div class="col-sm-12">
+                        <div class="input-group">
+                            <span>SKU明细</span>
+                        </div>
+                    </div>
+                </div>
+               <table class="table table-bordered table-striped through-view">
+                        <thead>
+                            <tr>
+                                <th>序号</th>      
+                                <th>商品编码</th>
+                                <th>商品名称</th>
+                                <th>SKU数量</th>
+                                <th>包装单位</th>
+                                <th>商品状态</th>
+                                <th>生产日期</th>
+                                <th>过期日期</th>
+                                <th>批次编码</th>
+                                <th>毛重</th>
+                                <th>净重</th>
+                                 <th>体积</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-if="!data.detailList.length">
+                                <td class="nodata" colspan="12">
+                                <span>暂无数据</span>
+                            </tr>
+                        </tbody>
+                        <tbody ng-if="data.detailList.length">
+                            <tr ng-repeat="row in data.detailList">
+                                <td ng-bind="$index+1"></td>
+                                <td ng-bind="row.baseGoods.skuCode"></td>
+                                <td ng-bind="row.baseGoods.skuName"></td>
+                                <td ng-bind="row.quantity"></td>
+                                <td ng-bind="row.unit"></td>
+                                <td ng-bind="row.inventoryStatusName"></td>
+                                <td ng-bind="row.produceDate"></td>
+                                <td ng-bind="row.expiryDate"></td>
+                                <td ng-bind="row.customerLot"></td>
+                                <td ng-bind="row.grossWeight"></td>
+                                <td ng-bind="row.netWeight"></td>
+                                <td ng-bind="row.volume"></td>
+                            </tr>
+                        </tbody>
+                </table>
+
+                <!-- <div class="row">
+                    <div class="col-sm-8">
+                        <div class="input-group">
+                            <span class="input-group-addon">是否启用</span>
+                            <div sl-radio="data" sl-radio-model="status" class="sl-combo col-xs-12"></div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <div class="box-footer">
+            <!-- <button class="btn btn-normal" ng-disabled="form.$invalid" ng-click="save()">保存</button> -->
+            <a class="btn btn-default" ng-back>返回列表</a>
+        </div>
+    </div>
+    </form>
+</section>
+
+ 
+<!-- 查看/修改 规则明细(模态框) -->
+ <script type="text/ng-template" id="rule/edit.html">
+    <div class="modal fade in" style="display:block;">
+        <div class="modal-dialog">
+            <div class="modal-content overflow-modal box box-default" sl-view >
+
+                <form name="form">
+                    <div class="modal-body" >
+                        <div class="box-data addon-right padding">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">行号</span>
+                                        <!-- <input type="text" class="form-control col-xs-9" ng-disabled="page.edit" ng-model="data.orderNum" maxlength="50" ng-maxlength="50" placeholder="50个字符以内" required> -->
+                                        <input type="text" class="form-control col-xs-9" ng-model="data.orderNum" maxlength="50" ng-maxlength="50" placeholder="50个字符以内" required>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="input-group ">
+                                        <span class="input-group-addon">策略名称</span>
+                                       <select class="form-control" ng-model="data.tacticsId" ng-options="v.id as v.label for v in page.deps.tactics" ></select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h4>货位限制</h4>
+                                    <div class="input-group col-sm-6 require">
+                                        <span class="input-group-addon">所属库区</span>
+                                        <select class="form-control" ng-model="data.warehouseZoneId" ng-options="v.id as v.label for v in page.deps.types"></select>
+                                    </div>
+                                    <div class="input-group col-sm-6 input-group-icon">
+                                        <span class="input-group-addon ">目标库位</span>
+                                        <input class="form-control" ng-model="data.warehouseLocationId"/>
+                                        <span class="input-group-addon span-icon"><i class="fa fa-search"></i></span>
+                                                                 
+                                        <!-- <select class="form-control" ng-model="data.warehouseLocationId" ng-options="v.id as v.label for v in page.deps.warehouseLocationId | filter:{'id':'!'+data.id}"></select> -->
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <h4>限制条件</h4>
+                                    <div class="input-group col-sm-8">
+                                        <span class="input-group-addon">订单类型</span>
+                                        <select class="form-control" ng-model="data.ordersType" ng-options="v.id as v.label for v in page.deps.ordersType" ></select>
+                                    </div>
+
+                                    <div class="input-group col-sm-8">
+                                        <span class="input-group-addon">商品类别</span>
+                                        <select class="form-control" ng-model="data.goodsCategory" ng-options="v.id as v.label for v in page.deps.goodsCategory" ></select>
+
+                                    </div>
+
+                                    <div class="input-group col-sm-8">
+                                        <span class="input-group-addon">库存状态</span>
+                                       <select class="form-control" ng-model="data.inventoryStatus" ng-options="v.id as v.label for v in page.deps.inventorystatus" ></select>
+                                    </div>
+
+
+                                    <div class="input-group col-sm-8">
+                                        <span class="input-group-addon">存储环境</span>
+                                         <select class="form-control" ng-model="data.evn" ng-options="v.id as v.label for v in page.deps.evn" ></select>
+                                    </div>
+
+
+                                    <div class="input-group col-sm-8  input-group-icon">
+                                        <span class="input-group-addon">指定商品</span>
+                                        <input type="text" class="form-control col-xs-9" ng-model="data.platformCode" placeholder="" ng-maxlength="50">
+                                        <span class="input-group-addon span-icon"><i class="fa fa-search"></i></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                           
+
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">规则说明</span>
+                                        <input type="text" class="form-control col-xs-9" ng-model="data.remake" maxlength="100" ng-maxlength="100" placeholder="100个字符以内">
+                                    </div>
+                                </div>
+                            </div>
+                           
+
+                    <div class="modal-footer text-center">
+                        <button class="btn btn-primary pull-center" ng-click="close(true)" ng-disabled="form.$invalid">确定</button>
+                        <a class="btn btn-default pull-center" ng-click="close(false)">取消</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</script>

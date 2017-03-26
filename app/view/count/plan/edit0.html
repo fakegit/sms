@@ -1,0 +1,215 @@
+<section class="content">
+    <div class="box box-default" sl-load  slt="{model:page.params , search: list}">
+        <div class="box-header">
+            <h3 class="box-title" ng-bind="page.title"></h3>
+            <sl-breadcrumb></sl-breadcrumb>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="box-data margin-bottom addon-right padding">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="input-group require">
+                            <span class="input-group-addon">盘点仓库</span>
+                            <select class="form-control" ng-model="data.warehouseId" ng-options="v.id as v.label for v in page.deps.warehouseId" required></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group require">
+                            <span class="input-group-addon">盘点类型</span>
+                            <select class="form-control" ng-model="data.type" ng-options="v.id as v.label for v in page.deps.type" required></select>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group require">
+                            <span class="input-group-addon require">商家名称</span>
+                            <div class="suggest-box" auto-complete='own_options'>
+                                <input type="text" class="form-control col-xs-9" ng-model="data.ownerName" placeholder="请输入SKU" required />
+                            </div> 
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="input-group">
+                            <span class="input-group-addon">盘点说明</span>
+                            <textarea class="form-control col-xs-9" ng-model="data.remark" maxlength="100" ng-maxlength="100" placeholder="100个字符以内"></textarea>
+                        </div>
+                    </div>
+                    <div class="col-sm-4" ng-show="page.edit">
+                        <div class="input-group" style="margin: 8%;">
+                            <button class="btn btn-normal" ng-click = 'plan.add()'>添加</button>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="row">
+                    
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">店铺名称</span>
+                            <div class="suggest-box" auto-complete='shop_options'>
+                                <input type="text" class="form-control col-xs-9" ng-model="data.shopName" placeholder="请输入SKU"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">商品名称</span>
+                            <div class="suggest-box" auto-complete='good_options'>
+                                <input type="text" class="form-control col-xs-9" ng-model="data.skuName" placeholder="请输入SKU"/>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- <div class="row">
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">盘点库位</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.minLocationCode" maxlength="50" ng-maxlength="50" placeholder="50个字符以内">
+                            <input type="text" class="form-control col-xs-9" ng-model="data.maxLocationCode" maxlength="50" ng-maxlength="50" placeholder="50个字符以内">
+                        </div>
+                    </div>
+                    
+
+                </div> -->
+            </div>
+            
+            <div class="box-data split">
+                <div class="box-operation">
+                    <div class="operation-wrap">
+                        <span class="title">盘点明细</span>
+                    </div>
+                </div>
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th ng-repeat="row in page.fields.detail.options" ng-bind="row.value"></th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-if="!data.planDetailVOPageVO.list.length">
+                        <tr>
+                            <td class="nodata" colspan="{{page.fields.detail.options.length - 1}}">
+                                <span>暂无数据</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody ng-if="data.planDetailVOPageVO.list.length">
+                        <tr ng-repeat="row in data.planDetailVOPageVO.list">
+                            <td ng-repeat="field in page.fields.detail.options">
+                                <span>{{row[field.key]}}</span>
+                            </td>
+                             <td>
+                                <a ng-click="ensure(row)">删除</a> 
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="box-page row" ng-show="data.planDetailVOPageVO.list" slt-pagination="page.params.pag"></div>
+            </div>
+        </div>
+        <div class="box-footer">
+            <a class="btn btn-default" ng-back>返回列表</a>
+            <a class="btn btn-normal" ng-click="save()" ng-show="page.edit">确定</a>
+        </div>
+    </div>
+     <div class="ensure" style="display: none; z-index: 9999;padding: 4%;background: #fff; position: absolute; margin-left: 30%; top: 300px; width: 400px;height: 300px; border:1px solid;font-size: initial; ">
+        <p class="p1">请确定是否要删除盘点任务明细:</p>
+        <p class="p2">
+            <span>库位：</span>
+            <span ng-bind="data0.locationCode"></span>
+        </p>
+        <p class="p3">
+            <span>商品编码：</span>
+            <span ng-bind="data0.skuCode"></span>
+        </p>
+        <p class="p4">
+            <span>商品名称：</span>
+            <span ng-bind="data0.skuName"></span>
+        </p>
+        <div class="btn">
+            <a class="btn btn-normal" style="margin-left: 30%" ng-click="btn('true')">确定</a>
+            <a class="btn btn-op" style="margin-left: 30%" ng-click="btn('false')">放弃</a>
+        </div>
+    </div>
+</section>
+
+
+<!-- 弹出框 -->
+ <script type="text/ng-template" id="cunt/edit.html">
+    <div class="modal fade in" style="display:block;">
+        <div class="modal-dialog" style="width: 1000px;">
+            <div class="modal-content overflow-modal box box-default" sl-view>
+
+                <form name="form">
+                    <div class="modal-body" >
+                        <div class="box-data addon-right padding">
+                            <div class="row">
+                                <div class="col-sm-6 require">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">店铺名称</span>
+                                        <div class="suggest-box" auto-complete='shop_options'>
+                                            <input type="text" class="form-control col-xs-9" ng-model="data.shopName" placeholder="请输入店铺名称"/>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 require">
+                                    <div class="input-group ">
+                                        <span class="input-group-addon">商品名称</span>
+                                        <div class="suggest-box" auto-complete='good_options'>
+                                            <input type="text" class="form-control col-xs-9" ng-model="data.skuName" placeholder="请输入SKU"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">盘点库位</span>
+                                            <input type="text" class=" col-xs-5" ng-model="data.minLocationCode" maxlength="50" ng-maxlength="50" placeholder="最小盘点库位">
+                                            <input type="text" style="float: right;" class=" col-xs-5" ng-model="data.maxLocationCode" maxlength="50" ng-maxlength="50" placeholder="最大盘点库位">
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <button class="btn btn-normal">查询</button>
+                                    </div>
+                                </div>          
+                            </div>
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th ng-repeat="row in page.fields.options" ng-bind="row.value"></th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody ng-if="!data.planDetailVOPageVO.list.length">
+                                    <tr>
+                                        <td class="nodata" colspan="{{page.fields.options.length - 1}}">
+                                            <span>暂无数据</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tbody ng-if="data.planDetailVOPageVO.list.length">
+                                    <tr ng-repeat="row in data.planDetailVOPageVO.list">
+                                        <td ng-repeat="field in page.fields.detail.options">
+                                            <span>{{row[field.key]}}</span>
+                                        </td>
+                                         <td>
+                                            <a ng-click="ensure(row)">删除</a> 
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>                              
+                    <div class="modal-footer text-center">
+                        <button class="btn btn-primary pull-center" ng-if="!page.view" ng-click="close(true)" ng-disabled="form.$invalid">确定</button>
+                        <a class="btn btn-default pull-center" ng-click="close(false)">取消</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</script>
+

@@ -1,0 +1,71 @@
+<section class="content">
+    <form name="form">
+    <div class="box box-default" sl-load sl-view>
+        <div class="box-header">
+            <h3 class="box-title" ng-bind="page.title"></h3>
+            <sl-breadcrumb></sl-breadcrumb>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body"> 
+            <div class="box-data margin-bottom addon-right padding">
+                <div class="row " style="border-bottom: 1px dashed;padding-bottom: 30px;">
+                    <div class="col-sm-3">
+                        <div class="input-group require">
+                            <span class="input-group-addon">模板名称</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.name" ng-disabled="page.edit" required>
+                        </div>
+                    </div>                
+                </div>
+            </div>                
+            <div class="box-data">
+                <div class="col-sm-8">
+                    <div style="padding-bottom: 20px;">
+                        <span>批次模板</span>
+                    </div>
+                </div>
+                <table class="table table-bordered table-striped through" >
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>属性名称</th>
+                            <th>属性类型</th>
+                            <th>属性控制</th>
+                        </tr>
+                    </thead>
+                    <tbody ng-if="!data.attr.length">
+                        <tr>
+                            <td class="nodata" colspan="4">
+                                <span>暂无数据</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody ng-if="data.attr.length">
+                        <tr ng-repeat="row in data.attr">
+                            <!-- 序号 -->
+                            <td ng-bind="$index+1"></td>
+                            <!-- <td class="col-sm-8">
+                                <input class="col-sm-12" type="text" value="row.no" ng-model="row.no" ng-disabled="true">
+                            </td> -->
+                            <td>
+                                <input class="col-sm-8" type="text" value="row.name" ng-model="row.name" ng-disabled="row.display">
+                            </td>
+                            <td>
+                                <select class="col-sm-8" ng-model="row.dataType" ng-options="v.key as v.value for v in page.dataTypes"></select>
+                            </td>
+                            <td>
+                                <select class="col-sm-8" ng-model="row.control" ng-options="v.key as v.value for v in page.controls"></select>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+               
+            </div>
+            <div class="box-footer">
+                 <a class="btn btn-default" ng-back>返回列表</a>
+                <button class="btn btn-normal" ng-disabled="form.$invalid" ng-click="save()">保存</button>
+            </div>
+            </div>
+    </div>
+    </form>
+</section>

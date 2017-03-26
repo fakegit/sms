@@ -1,0 +1,33 @@
+.ui-area{
+
+  .area-select{
+    position: relative;
+  }
+
+  .ui-dropdown
+  {
+    width: 33.33333333%;
+    position: static;
+
+    &:nth-child(n+2) .dd-toggle
+    {
+      border-left:none;
+    }
+
+    .dd-toggle{
+      width:100%;
+      overflow: hidden; text-overflow:ellipsis;
+      position: relative;
+      border-radius: 0;
+    }
+
+    .dd-menu{
+      width:100%;
+
+      li{
+        float:left;min-width:90px;
+            text-align: center;
+      }
+    }
+  }
+}

@@ -1,0 +1,130 @@
+<section class="content">
+    <form name="form">
+    <div class="box box-default" sl-load  slt="{model:page.params , search: list}">
+        <div class="box-header">
+            <h3 class="box-title" ng-bind="page.title"></h3>
+            <sl-breadcrumb></sl-breadcrumb>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body"> 
+            <div class="box-data margin-bottom addon-right padding">
+                <div class="row ">
+                    <div class="col-sm-3">
+    
+                    </div>                
+                </div>
+            </div>                
+            <div class="box-data" >
+                <div class="table table-bordered table-striped">
+                    <div class="col-sm-12" style=" border:1px solid #ccc;">
+                        <div class="col-sm-12 pad"  style="padding-left: 30px;">
+                            <span>波次单号：</span>
+                            <span ng-bind="data1.code"></span>
+                        </div>
+                        <div class="col-sm-12 pad">
+                            <div class="col-sm-2 ">
+                                <span>业务类型：</span>
+                                <span ng-bind="data1.businessTypeName"></span>
+                            </div>
+                            <div class="col-sm-2">
+                                <span>波次规则：</span>
+                                <span ng-bind="data1.ruleName"></span>
+                            </div>
+                            <div class="col-sm-2">
+                                <span>拣货类型：</span>
+                                <span ng-bind="data1.pickTypeName"></span>
+                            </div>
+                            <div class="col-sm-2">
+                                <span>状态：</span>
+                                <span ng-bind="data1.waveStatusName"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 pad">
+                            <div class="col-sm-2"> 
+                                <span>波次单打印次数：</span>
+                                <span ng-bind="data1.wavePrintedTimes"></span>
+                            </div>
+                            <div class="col-sm-2"> 
+                                <span>波次单打印时间：</span>
+                                <span ng-bind="data1.wavePrintedTime"></span>
+                            </div>
+                            <div class="col-sm-2"> 
+                                <span>波次单打印人：</span>
+                                <span ng-bind="data1.wavePrintedName"></span>
+                            </div>
+                            <div class="col-sm-2"> 
+                                <span>快递单打印次数：</span>
+                                <span ng-bind="data1.waybillPrintedTimes"></span>
+                            </div>
+                            <div class="col-sm-2"> 
+                                <span>快递单打印时间：</span>
+                                <span ng-bind="data1.waybillPrintedTime"></span>
+                            </div>
+                            <div class="col-sm-2"> 
+                                <span>快递单打印人：</span>
+                                <span ng-bind="data1.waybillPrintedName"></span>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 pad">
+                            <div class="col-sm-2"> 
+                                <span>随箱单打印次数：</span>
+                                <span ng-bind="data1.packPrintedTimes"></span>
+                            </div>
+                            <div class="col-sm-2"> 
+                                <span>随箱单打印时间：</span>
+                                <span ng-bind="data1.packPrintedTime"></span>
+                            </div>
+                            <div class="col-sm-2"> 
+                                <span>随箱单打印人：</span>
+                                <span ng-bind="data1.packPrintedName"></span>
+                            </div>
+                            <div class="col-sm-2"> 
+                                <span>发票打印次数：</span>
+                                <span ng-bind="data1.invoicePrintedTimes"></span>
+                            </div>
+                            <div class="col-sm-2"> 
+                                <span>发票打印时间：</span>
+                                <span ng-bind="data1.invoicePrintedTime"></span>
+                            </div>
+                            <div class="col-sm-2"> 
+                                <span>发票打印单人：</span>
+                                <span ng-bind="data1.invoicePrintedName"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table table-bordered table-striped through" >
+                    <thead>
+                        <tr>
+                            <th ng-repeat="row in page.fields.options"  ng-bind="row.value"></th>
+                        </tr>
+                    </thead>
+
+                    <tbody ng-if="!data.length">
+                        <tr>
+                            <td class="nodata" colspan="{{page.fields.options.length}}">
+                                <span>暂无数据</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody ng-if="data.length">
+                        <tr ng-repeat="row in data">
+                            <td ng-repeat="field in page.fields.options">
+                                <span >{{row[field.key]}}</span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+                <div class="box-page row" ng-show="data.length" slt-pagination="page.params.pag"></div>
+            </div>
+
+            <div class="box-footer">
+                 <a class="btn btn-default" ng-back>返回列表</a>
+                <button ng-if='!page.view' class="btn btn-normal" ng-disabled="form.$invalid" ng-click="save()">保存</button>
+            </div>
+            </div>
+    </div>
+    </form>
+</section>

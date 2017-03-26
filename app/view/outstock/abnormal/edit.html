@@ -1,0 +1,192 @@
+<section class="content">
+    <form name="form">
+        <div class="box box-default" sl-load sl-view>
+            <div class="box-header">
+                <h3 class="box-title" ng-bind="page.title"></h3>
+                <sl-breadcrumb></sl-breadcrumb>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <div class="box-data margin-bottom addon-left padding">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">出库单号</span>
+                                <input type="text" class="form-control col-xs-9" ng-model="data.billVo.orderNo">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">客户单号</span>
+                                <input type="text" name="name" class="form-control col-xs-9"  ng-model="data.billVo.customerNo">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">商家名称</span>
+                                <input type="text" class="form-control col-xs-9" ng-model="data.billVo.customerName">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">店铺名称</span>
+                                <input type="text" class="form-control col-xs-9" ng-model="data.billVo.shopName">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">仓库名称</span>
+                                <input type="text" class="form-control col-xs-9" ng-model="data.billVo.warehouseName">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">波次号</span>
+                                <input type="text" class="form-control col-xs-9" ng-model="data.billVo.waveCode">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">出库类型</span>
+                                <input type="text" class="form-control col-xs-9" ng-model="data.billVo.billType">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">业务类型</span>
+                                <input type="text" class="form-control col-xs-9" ng-model="data.billVo.businessType">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">物流公司</span>
+                                <input type="text" class="form-control col-xs-9" ng-model="data.billVo.logisticsName">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">运单号</span>
+                                <input type="text" class="form-control col-xs-9" ng-model="data.billVo.waybillNo">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">面单类型</span>
+                                <input type="text" class="form-control col-xs-9" ng-model="data.billVo.waybillTypeName">
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <span class="input-group-addon">单据状态</span>
+                                <input type="text" class="form-control col-xs-9" ng-model="data.billVo.statusDesc" >
+                            </div>
+                        </div>
+                    </div>
+                     <div class="row">
+                         <div class="col-sm-3">
+                             <div class="input-group">
+                                 <span class="input-group-addon">接单时间</span>
+                                 <input type="text" class="form-control col-xs-9" ng-model="data.billVo.orderTime">
+                             </div>
+                         </div>
+                     </div>
+
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                                <h6>收货人信息</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">公司名称</span>
+                                <input type="text" class="form-control col-xs-9" ng-model="data.billVo.companyName">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">收货人</span>
+                                <input type="text" class="form-control col-xs-9" ng-model="data.billVo.receiver">
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="input-group">
+                                <span class="input-group-addon">联系电话</span>
+                                <input type="text" class="form-control col-xs-9" ng-model="data.billVo.tel">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <span class="input-group-addon">地址</span>
+                                <input type="text" class="form-control col-xs-9" ng-model="data.billVo.address">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <span class="input-group-addon">备注信息</span>
+                                <input type="text" class="form-control col-xs-9" ng-model="data.billVo.remark">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="padding: 20px 0;">
+                        <div class="col-sm-12">
+                            <div class="input-group">
+                                <h6>SKU明细</h6>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table table-bordered table-striped through-view">
+                        <thead>
+                        <tr>
+                            <td ng-repeat="v in page.fields.model">{{v.value}}</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-if="!data.details.length">
+                            <td class="nodata" colspan="{{page.fields.model.length}}">
+                                <span>暂无数据</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tbody ng-if="data.details.length">
+                        <tr ng-repeat="row in data.details">
+                            <td ng-bind="$index+1"></td>
+                            <td ng-bind="row.goodsSkuName"></td>
+                            <td ng-bind="row.goodsSkuCode"></td>
+                            <td ng-bind="row.quantity"></td>
+                            <td ng-bind="row.unit"></td>
+                            <td ng-bind="row.inventoryStatusName"></td>
+                            <td ng-bind="row.produceDate"></td>
+                            <td ng-bind="row.expiryDate"></td>
+                            <td ng-bind="row.customerLot"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- <div class="row">
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <span class="input-group-addon">是否启用</span>
+                                <div sl-radio="data" sl-radio-model="status" class="sl-combo col-xs-12"></div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+            <div class="box-footer">
+                <!-- <button class="btn btn-normal" ng-disabled="form.$invalid" ng-click="save()">保存</button> -->
+                <a class="btn btn-default" ng-back>返回列表</a>
+                <a class="btn btn-default" ng-click="allocation()">手动分配</a>
+            </div>
+        </div>
+    </form>
+</section>

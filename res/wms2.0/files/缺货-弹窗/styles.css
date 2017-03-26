@@ -1,0 +1,121 @@
+﻿body {
+  margin:0px;
+  background-image:none;
+  position:static;
+  left:auto;
+  width:760px;
+  margin-left:0;
+  margin-right:0;
+  text-align:left;
+}
+#base {
+  position:absolute;
+  z-index:0;
+}
+#u10468_div {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:486px;
+  height:211px;
+  background:inherit;
+  background-color:rgba(255, 255, 255, 1);
+  box-sizing:border-box;
+  border-width:1px;
+  border-style:solid;
+  border-color:rgba(121, 121, 121, 1);
+  border-radius:0px;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+}
+#u10468 {
+  position:absolute;
+  left:274px;
+  top:119px;
+  width:486px;
+  height:211px;
+}
+#u10469 {
+  position:absolute;
+  left:2px;
+  top:98px;
+  width:482px;
+  visibility:hidden;
+  word-wrap:break-word;
+}
+#u10470_div {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:129px;
+  height:33px;
+  background:inherit;
+  background-color:rgba(255, 255, 255, 0);
+  border:none;
+  border-radius:0px;
+  -moz-box-shadow:none;
+  -webkit-box-shadow:none;
+  box-shadow:none;
+  font-size:28px;
+}
+#u10470 {
+  position:absolute;
+  left:319px;
+  top:155px;
+  width:129px;
+  height:33px;
+  font-size:28px;
+}
+#u10471 {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:129px;
+  word-wrap:break-word;
+}
+#u10472 {
+  position:absolute;
+  left:448px;
+  top:155px;
+  width:218px;
+  height:33px;
+}
+#u10472_input {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:218px;
+  height:33px;
+  font-family:'Arial Normal', 'Arial';
+  font-weight:400;
+  font-style:normal;
+  font-size:13px;
+  text-decoration:none;
+  color:#000000;
+}
+#u10472_input:disabled {
+  color:grayText;
+}
+#u10473 {
+  position:absolute;
+  left:447px;
+  top:266px;
+  width:140px;
+  height:25px;
+}
+#u10473_input {
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:140px;
+  height:25px;
+  background-color:transparent;
+  font-family:'Arial Normal', 'Arial';
+  font-weight:400;
+  font-style:normal;
+  font-size:13px;
+  text-decoration:none;
+  color:#333333;
+  text-align:center;
+}
