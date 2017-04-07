@@ -306,7 +306,7 @@ define(['jquery'], function(jQuery) {
         $.AdminLTE.layout.activate();
 
         //Enable sidebar tree view controls
-        //$.AdminLTE.tree('.sidebar');
+        $.AdminLTE.tree('.sidebar');
 
         //Activate sidebar push menu
         if (o.sidebarPushMenu) {

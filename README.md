@@ -1,2 +1,0 @@
-# sms
-server manger system

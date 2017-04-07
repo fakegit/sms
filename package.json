@@ -1,12 +1,13 @@
 {
   "devDependencies": {
+    "body-parser": "^1.17.1",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-add-src": "^0.2.0",
     "gulp-angular-templatecache": "^2.0.0",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-clean": "^0.3.2",
-    "gulp-clean-css": "^2.0.12",
+    "gulp-clean-css": "^2.3.1",
     "gulp-concat": "^2.6.0",
     "gulp-ftp": "^1.1.0",
     "gulp-htmlmin": "^2.0.0",
@@ -23,6 +24,7 @@
     "gulp-util": "^3.0.7",
     "http-proxy": "^1.15.2",
     "localtunnel": "^1.8.2",
+    "lowdb": "^0.16.0",
     "watch": "^0.19.2",
     "websocket": "^1.0.23"
   },

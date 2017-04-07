@@ -1,18 +1,26 @@
-/**
- * 建立angular.module
- */
 define(function() {
     var menu = [
         {
-            "name": "SMS",
-            "url": "/",
+            "name": "独立服务器",
+            "url": "/dedi",
             "icon":"fa-th",
-            "children": [
-                
-                {"name":"独立服务器","icon":"fa-th","url":"/dedicated"},
-                {"name":"VPS","icon":"fa-th","url":"/vps"},
-               
-            ]
+        },
+        {
+            "name": "VPS",
+            "url": "/vps",
+            "icon":"fa-th",
+        },
+        {
+            "name": "虚拟主机",
+            "url": "/host",
+            "icon":"fa-th",
+            
+        },
+        {
+            "name": "系统配置管理",
+            "url": "/sys",
+            "icon":"fa-th",
+            "children":[]
         }
     ]
 

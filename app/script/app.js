@@ -2,7 +2,7 @@
  * 建立angular.module
  */
 define(['angular'], function(angular) {
-    return angular.module('sms', [
+    return angular.module('sl', [
             'ngAnimate','ngSanitize', 'ui.router',
 
             //upload组件

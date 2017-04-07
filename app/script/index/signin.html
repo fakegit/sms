@@ -1,0 +1,59 @@
+<stats></stats>
+<div class="sign">
+    <header>
+        <div class="logo"></div>
+    </header>
+    <section>
+        <div class="cnt">
+            <div class="sign-box">
+                <div class="sign-box-header">
+                    欢迎登录
+                </div>
+                <div class="sign-box-body">
+                    <p class="sign-box-msg text-red" ng-show="page.error"><i class="fa  fa-minus-circle"></i>{{page.error}}</p>
+                    <form name="form">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                            <input type="text" ng-model="data.username" class="form-control" placeholder="用户名" required>
+                        </div>
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                            <input type="password" ng-model="data.password" class="form-control" placeholder="密码" required>
+                        </div>
+                        <!-- <div class="row system">
+                            <div class="col-xs-12">
+                                <div class="input-group">
+                                    <span class="input-group-addon">登陆系统</span>
+                                    <div class="sl-combo col-xs-12">
+                                        <label>
+                                            <input type="radio" name="systemCode" class="nr-checkbox" ng-model="page.systemCode" value="nroms" required> <i></i> 用户系统</label>
+                                        <label>
+                                            <input type="radio" name="systemCode" class="nr-checkbox" ng-model="page.systemCode" value="nrwms" required> <i></i> 商户系统</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <label>
+                                    <input type="checkbox" class="nr-checkbox" ng-model="page.saveFlag" style=""> <i></i> 记住密码</label>
+                            </div>
+                            <div class="col-xs-6"></div>
+                        </div>
+                        <div class="row">
+                            <!-- /.col -->
+                            <div class="col-xs-12">
+                                <button type="submit" ng-disabled="form.$invalid" ng-click="signin()" class="btn btn-block btn-primary btn-flat">登 陆</button>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>服务热线：10086</p>
+        <p>版权所有 © 2017 | 浙ICP备15031173号</p>
+    </footer>
+</div>

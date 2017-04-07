@@ -1,0 +1,64 @@
+<stats></stats>
+
+<div class="wrapper">
+    <header class="main-header">
+
+        <a href="#" class="logo">
+            <span class="logo-mini"><strong>S</strong></span>
+            <span class="logo-lg"><b>S</b>MS</span>
+        </a>
+        
+        <nav class="navbar navbar-static-top">
+            <div class="navbar-custom-menu">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a ng-click="signout()"><i class="fa fa-power-off"></i>退出</a>
+                    </li>
+<!--                     <li class="dropdown setting-menu">
+                        <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-gears"></i></a>
+
+                        <ul class="dropdown-menu">
+                          <li class="header"><i class="fa fa-language"></i> 设置语言</li>
+                          <li class="menu">
+                            <div class="row">
+                              <div class="col-xs-4 text-center">
+                                <a sl-lang="zh-CN">中文</a>
+                              </div>
+                              <div class="col-xs-4 text-center">
+                                <a sl-lang="en-US">英文</a>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="footer"></li>
+                        </ul>
+                    </li> -->
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <aside class="main-sidebar">
+        <section class="sidebar">
+            <a href="#" class="sidebar-toggle" ng-click="collapse()">
+                <i class="fa fa-fw fa-bars"> </i>
+            </a>
+            <ul class="sidebar-menu">
+                <li class="treeview" ng-repeat="cat in menu">
+                    <a href="{{cat.url  || '#'}}">
+                        <i class="fa fa-th"></i>
+                        <span ng-bind="cat.name"></span>
+                        <span class="pull-right-container">
+                          <i class="fa fa-angle-left pull-right"></i>
+                        </span>
+                    </a>
+                    <ul class="treeview-menu" ng-if="cat.children && cat.children.length">
+                        <li ng-repeat="subcat in cat.children"><a href="{{subcat.url}}" nr-href><i class="fa fa-circle-o"></i>{{subcat.name}}</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+    </aside>
+    <div class="content-wrapper">
+        <div ui-view></div>
+    </div>
+</div>

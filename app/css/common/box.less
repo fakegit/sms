@@ -4,8 +4,6 @@
 */
 
 
-/* from 等 */
-
 .box-default {
     .reset();
     .layout();
@@ -24,13 +22,8 @@
     }
     .box-data {
         .box-data();
-
-
     }
-    // .box-table
-    .table {
-        .table();
-    }
+
     .box-upload {
         .box-upload();
     }
@@ -44,6 +37,7 @@
     & {
         padding: 20px;
         border-bottom: 1px solid #e5e5e5;
+        background: #fff;
     }
     .breadcrumb {
         margin-bottom: 0;
@@ -56,30 +50,8 @@
 }
 
 .box-body(){
-    .rowpad { padding: 0 28px;}
-    .noborder { border:none;padding-top:10px;}
-    .tab{
-        border-bottom: 2px solid #eee;
-        li{
-            display: inline-block;
-        }
-        a{
-            display: inline-block;
-            height: 48px;
-            width:120px;
-            line-height: 48px;
-            color: #333;
-            font-size: 14px;
-            margin-bottom: -2px;
-            text-align: center;
-            cursor: pointer;
-        }
-
-        a.active{
-            border-bottom: 2px solid #3c8dbc;
-            color: #3c8dbc;
-        }
-    }
+    padding:0;
+    background:#fff;
 }
 
 .loading() {
@@ -159,7 +131,17 @@ body.loading {
 
 .layout() {
     border-top: none;
+    background: none;
 
+    .panel{
+        box-shadow: 0 1px 1px rgba(128,128,128,0.06);
+        border-radius: 0;
+        border:none;
+    }
+
+    .panel.margin-top{
+        margin-top:12px;
+    }
     .border-t{
         border-top: 1px solid #e5e5e5;
     };
@@ -194,6 +176,17 @@ body.loading {
         background: none;
         border: none;
         padding-left: 0;
+    }
+    .addon-last {
+        padding: 6px 12px;
+        font-size: 12px;
+        line-height: 1;
+        color: #555;
+        text-align: center;
+        display: table-cell;
+        width: 1%;
+        white-space: nowrap;
+        vertical-align: middle;
     }
     .input-group-span {
         padding: 6px 12px;
@@ -255,162 +248,20 @@ body.loading {
     }
 }
 
-.table() {
-    table-layout: fixed;
-    border: 1px solid #e5e5e5;
-    th,
-    td {
-        padding: 10px;
-        line-height: 2;
-        // text-overflow: ellipsis;
-        word-wrap:break-word;
-        word-break:break-all;
-    }
-    td a:nth-child(n+2):before{
-        content:'|';
-        margin:0 5px;
-        color:#555;
-    }
-    th {
-        background-color: #f5f5f5;
-        &:first-child {
-            width: 50px;
-        }
-        &:last-child {
-            width: 150px;
-            // text-align: center;
-        }
-    }
-
-    &.index th {
-        background-color: #f5f5f5;
-        &:first-child {
-            width: 20px;
-        }
-    }
-
-    &.index-2 th {
-        background-color: #f5f5f5;
-        &:nth-child(-n+2) {
-            width: 40px;
-        }
-        
-    }
-
-    &.w-d-last th {
-        &:last-child{
-            width: 60px;
-        }
-    }
-
-
-    tr.active{
-        background: #337ab7;
-        color:#fff;
-    }
-
-    &.highlight-top{
-        tbody tr:first-child{
-            background: #337ab7;
-            color:#fff;
-        }
-    }
-
-    &.divide{
-        th:first-child,
-        th:last-child {
-            width: auto;
-            // text-align: center;
-        }
-    }
-
-    &.center {
-        th{
-            padding-left:0;padding-right: 0;
-            text-align: center;
-        }
-        td{
-            text-align: center;
-        }
-    }
-    tr.gray{
-        background: #888;
-        color:#fff;
-    }
-
-    tr.disabled{
-        background: #888;
-        color:#fff;
-        text-decoration:line-through; 
-        a{
-            color:#fff;
-            text-decoration:none;
-        }
-    }
-
-    td:last-child{
-        // text-align: center;
-    }
-    .nodata {
-        padding: 20px 0;
-        text-align: center;
-        display: table-cell !important;
-    }
-    thead > tr > th {
-        padding-right: 0px;
-    }
-    .sorting,
-    .sorting_asc,
-    .sorting_desc {
-        cursor: pointer;
-        position: relative;
-    }
-    .sorting:after,
-    .sorting_asc:after,
-    .sorting_desc:after {
-        position: absolute;
-        top: 10px;
-        right: 8px;
-        display: block;
-        font-family: 'FontAwesome';
-        opacity: 0.5;
-    }
-    .sorting:after {
-        content: "\f0dc";
-    }
-    .sorting_asc:after {
-        content: "\f160";
-    }
-    .sorting_desc:after {
-        content: "\f161";
-    }
-
-    //没有排序时
-    &.no-index{
-        th:first-child {
-            width: auto;
-        }
-    }
-
-    // 没有操作菜单时
-    &.no-op{
-        th:last-child {
-            width: auto;
-        }
-    }
-}
 
 
 /* box-operarion 功能操作区*/
 
 .box-operation() {
-    margin: 5px 0 15px 0;
+    margin: 0 0 0 0;
     position: relative;
     min-height: 32px;
+    padding:10px;
+    .operation-wrap{
+        display: inline-block;
+    }
     .operation-quick {
-        position: absolute;
-        right: 0px;
-        top: 0px;
+        float:right;
     }
     .btn i.fa-foot {
         margin-right: 0;
@@ -427,6 +278,9 @@ body.loading {
 }
 
 .box-filter {
+    padding:15px 10px ;
+    margin-bottom: 0;
+
     .btn {
         margin-right: 5px;
     }
@@ -443,22 +297,20 @@ body.loading {
         font-size: 14px;
         color: #666;
     }
-    &>div {
+    &>div,&>form>div {
         padding: 6px 0;
     }
 }
 
 .box-data() {
-    .mypad{ 
-        margin-left:30px;
-        span { margin-left:10px;}  
-     }
-
-
-    
+    // padding:10px;
+    background: #fff;
     &.split{
         border-top: 1px dashed #ccc;
         padding-top:15px;
+    }
+    &.padding{
+        padding: 10px;
     }
     &.padding >div,
     &.padding .row
@@ -487,19 +339,7 @@ body.loading {
         padding-bottom: 25px;
         margin-bottom: 20px;
     }
-    .require .input-group-addon:before {
-        content: '*';
-        color: #ff0000;
-        font-size: 16px;
-        /* float: left; */
-        /* vertical-align: middle; */
-        /* display: table-cell; */
-        /* position: absolute; */
-        float: left;
-        /* left: -8px; */
-        margin-right: 5px;
-        display: inline;
-    }
+
     
     .tip {
         margin: 0;
@@ -562,7 +402,8 @@ body.loading {
     padding: 25px;
 }
 
-.box-page {
+.table-pagination {
+    margin:10px;
     .pagination {
         margin: 2px 0;
         white-space: nowrap;

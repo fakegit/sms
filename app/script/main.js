@@ -37,6 +37,8 @@ require.config({
         'ng_file_upload':'../lib/ng-file-upload/ng-file-upload',
 
         'ng_notify':'../lib/ng-notify/dist/ng-notify.min',
+        'lowdb':'../lib/lowdb/lowdb.min',
+        'lodash':'../lib/lodash/lodash.min',
         //'ui_select':'../lib/angular-ui-select/dist/select.min'
 
     },
@@ -97,6 +99,13 @@ require.config({
             deps: ['angular'],
             exports: 'ng_notify'
         },
+        'lowdb':{
+            deps:['lodash'],
+            exports:'lowdb'
+        },
+        'lodash':{
+            exports:'lodash'
+        }
         /*'ui_select':{
             deps:['angular'],
             exports:'ui_select'
@@ -114,42 +123,44 @@ require([
     // 'ui_select','bootstrap_ui',
 
     // 'admin_lte',
-    'app', 'route', 'layout','menu','config',
-    'filter/common',
-    'services/common/sl',
-    'services/common/core',
-    'services/common/store',
-    'services/common/modal',
-    'services/common/auth',
-    'services/common/i18n',
-    'services/common/utils',
-    'services/common/httpx',
-    'services/common/intercept',
-    'services/common/ui',
-    'services/common/debug',
-    'services/common/l10n',
-    
+    'app', 'layout','menu','config','lodash','lowdb',
+    'common/filter/common',
+    'common/services/sl',
+    'common/services/core',
+    'common/services/store',
+    'common/services/modal',
+    'common/services/auth',
+    'common/services/i18n',
+    'common/services/utils',
+    'common/services/httpx',
+    'common/services/intercept',
+    'common/services/ui',
+    'common/services/debug',
+    'common/services/l10n',
+    'common/services/print',
+    'common/services/hello',
 
     //指令
-    'directives/common',
-    'directives/autoComplete',
-    'directives/sl.tree',
-    'directives/sl.fields', 
-    'directives/sl.search',
-    'directives/sl.table',
-    'directives/sl.data',
-    'directives/sl.tab',
-    'directives/sl.area',
-    'directives/sl.datetime',
+    'common/directives/common',
+    'common/directives/autoComplete',
+    'common/directives/sl.tree',
+    'common/directives/sl.fields', 
+    'common/directives/sl.search',
+    'common/directives/sl.table',
+    'common/directives/sl.data',
+    'common/directives/sl.tab',
+    'common/directives/sl.area',
+    'common/directives/sl.datetime',
 
 
-    'services/index',
-    'controllers/index',
-    'controllers/signin',
+    'index/service',
+    'index/router',
+    'index/index',
+    'index/signin',
 
-    'services/vps',
-    'controllers/vps/list',
-    'controllers/vps/router',
+    'vps/service',
+    'vps/router',
+    'vps/list',
 
 
 ], function($, angular, moment) {
@@ -157,7 +168,7 @@ require([
     $(function() {
         moment.locale('zh-cn');
         angular.element(document.body).removeClass('loading');
-        angular.bootstrap(document, ['sms']);
+        angular.bootstrap(document, ['sl']);
     })
 
 });
