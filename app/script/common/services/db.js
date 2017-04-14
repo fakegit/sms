@@ -50,6 +50,6 @@ define(['app'], function(app ) {
 	db.prototype.find = function(){
 		
 	}
-
+	
 	return db;
 })
