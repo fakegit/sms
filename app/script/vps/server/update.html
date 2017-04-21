@@ -1,0 +1,118 @@
+<section class="content">
+    <form name="form">
+    <div class="box box-default" sl-load sl-view>
+        <div class="box-header">
+            <h3 class="box-title" ng-bind="page.title"></h3>
+            <sl-breadcrumb></sl-breadcrumb>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="box-data margin-bottom addon-right padding">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group require">
+                            <span class="input-group-addon">名称</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.name"  maxlength="50" ng-maxlength="50" placeholder="50个字符以内" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group require">
+                            <span class="input-group-addon">类型</span>
+                            <select class="form-control" ng-model="data.type" required>
+                                <option value="solusvm">SolusVM</option>
+                                <option value="vultr">Vultr</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" ng-if="data.type == 'solusvm'">
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">供应商</span>
+                            <select class="form-control" ng-model="data.provider" ng-options="v.id as v.label for v in page.deps.provider" required></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">描述</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.remark" maxlength="50" ng-maxlength="50" placeholder="50个字符以内">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row" ng-if="data.type == 'solusvm'">
+                    <div class="col-sm-6">
+                        <div class="input-group require">
+                            <span class="input-group-addon">API Url</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.api_url" maxlength="128" ng-maxlength="128" placeholder=" SolusVM 后台地址" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group require">
+                            <span class="input-group-addon">API Key</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.api_key" maxlength="128" ng-maxlength="128" placeholder="128个字符以内" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" ng-if="data.type == 'solusvm'">
+                    <div class="col-sm-6">
+                        <div class="input-group require">
+                            <span class="input-group-addon">API Hash</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.api_hash" maxlength="128" ng-maxlength="128" placeholder="128个字符以内" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">是否启用</span>
+                            <div sl-radio="data" sl-radio-model="status" class="sl-combo col-xs-12"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div ng-if="data.type=='solusvm'" class="box-data margin-bottom addon-right padding split">
+                 <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">虚拟化方式</span>
+                            <select ng-model="data.virtualization" class="form-control">
+                                <option value="kvm">KVM</option>
+                                <option value="openvz">OpenVZ</option>
+                                <option value="xen">XEN</option>
+                                <option value="vm">VMware</option>
+                                <option value="hy">Hyper-V</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- <div class="col-sm-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">操作系统</span>
+                            <select class="form-control">
+                                <option value="centos">CentOS</option>
+                                <option value="debian">Debian</option>
+                                <option value="xen">XEN</option>
+                                <option value="vm">VMware</option>
+                                <option value="hy">Hyper-V</option>
+                            </select>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <div class="box-footer">
+            <button class="btn btn-primary" ng-disabled="form.$invalid" ng-click="save()">保存</button>
+            <a class="btn btn-default" ng-back>返回</a>
+        </div>
+    </div>
+    </form>
+</section>

@@ -25,7 +25,7 @@
 define(['app'], function(app) {
     app.run(['$templateCache', function($templateCache) {
         $templateCache.put('template/common/modal.html',
-            '<div tabindex="0" class="modal fade in" ng-class={"modal-alert":page.alert} style="display:block;"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" ng-click="close(false)"><span aria-hidden="true">×</span></button><h4 class="modal-title" ng-bind="page.title"></h4></div><div class="modal-body text-center" ng-bind-html="page.content"></div><div class="modal-footer"><button ng-if="!page.alert" type="button" class="btn btn-default/* pull-left*/" data-dismiss="modal" ng-click="close(false)">取消</button><button type="button" class="btn btn-normal" ng-click="close(true)">确定</button></div></div></div></div>');
+            '<div tabindex="0" class="modal fade in" ng-class={"modal-alert":page.alert} style="display:block;"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" ng-click="close(false)"><span aria-hidden="true">×</span></button><h4 class="modal-title" ng-bind="page.title"></h4></div><div class="modal-body text-center" ng-bind-html="page.content"></div><div class="modal-footer"><button ng-if="!page.alert" type="button" class="btn btn-default" data-dismiss="modal" ng-click="close(false)">取消</button><button type="button" class="btn btn-primary" ng-click="close(true)">确定</button></div></div></div></div>');
     }]);
 
     /**
@@ -202,7 +202,7 @@ define(['app'], function(app) {
                         //closeDeferred.resolve(result);
                         $animate.leave(modalElement)
                             .then(function() {
-                                modalScope.$destroy();
+                                modalScope && modalScope.$destroy();
                                 vm.close = null;
                                 deferred = null;
                                 //modal = null;

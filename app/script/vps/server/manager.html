@@ -1,0 +1,73 @@
+<section class="content">
+    <form name="form">
+    <div class="box box-default view" sl-load>
+        <div class="box-header">
+            <h3 class="box-title" ng-bind="page.title"></h3>
+            <sl-breadcrumb></sl-breadcrumb>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="box-operation">
+                <div class="operation-wrap">
+                    <!-- 跳转createye页面的链接 -->
+                    <button ng-confirm="{title:'提示',content:'确定执行启动吗？',callback:boot}" class="btn btn-primary btn-flat"><i class="fa fa-play"></i>启动</button>
+                    <button ng-confirm="{title:'提示',content:'确定执行关机吗？',callback:shutdown}" class="btn btn-primary btn-flat"><i class="fa fa-stop"></i>关机</button>
+                    <button class="btn btn-primary btn-flat"><i class="fa fa-repeat"></i>重启</button>
+                </div>
+            </div>
+            <div class="box-data margin-bottom addon-right padding">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">主机名称</span>
+                            <label type="text" class="col-xs-9" ng-bind="data.label">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">状态</span>
+                            <label type="text" class="col-xs-9">{{data.status}}</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">磁盘</span>
+                            <div class="progress-group col-xs-9" ng-show="data.disk_total">
+                                <span class="progress-text"><b>{{data.disk_used}}GB</b> / {{data.disk_total}}GB</span>
+                                <span class="progress-number"><b>{{100*data.disk_used/data.disk_total}}</b>%</span>
+
+                                <div class="progress sm">
+                                  <div class="progress-bar progress-bar-aqua" style="width: {{100*data.disk_used/data.disk_total}}%"></div>
+                                </div>
+                              </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">内存</span>
+                            <label type="text" class="col-xs-9" ng-bind="data.memory"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">IPv4</span>
+                            <label type="text" class="col-xs-9" ng-bind="data.main_ip">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-footer">
+            <a class="btn btn-default" ng-back>返回</a>
+        </div>
+    </div>
+    </form>
+</section>

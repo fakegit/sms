@@ -5,6 +5,19 @@
 
 define(['app'], function(app) {
 
+    app.directive('slFlag', function() {
+
+        return function(scope, element, attr) {
+            scope.$watch(attr.slFlag, function(flag,ov) {
+                console.log(flag , ov)
+                flag = !flag ? 'world' : flag.toLowerCase();
+                console.log(flag)
+                element.attr('src' , '/img/flags/'+flag+'.png');
+            });
+        };
+    });
+
+
     app.directive('onKeyenter', function() {
         return function(scope, element, attr) {
             element.bind("keyup", function(e) {

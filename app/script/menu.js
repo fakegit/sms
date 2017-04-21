@@ -7,8 +7,17 @@ define(function() {
         },
         {
             "name": "VPS",
-            "url": "/vps",
+            "url": "/vps/provider",
             "icon":"fa-th",
+            children:[
+                {
+                    "name": "服务",
+                    "url": "/vps/server",
+                },{
+                    "name": "供应商",
+                    "url": "/vps/provider",
+                },
+            ]
         },
         {
             "name": "虚拟主机",

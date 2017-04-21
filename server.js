@@ -8,10 +8,11 @@ const path = require('path');
 const less = require("less-middleware");
 const os = require('os');  
 const request = require('request');
+const https = require('https');
 
 
 const express = require('express');
-const service = require('./api/nodejs/index.js');
+// const service = require('./api/nodejs/index.js');
 const bodyParser = require('body-parser')
 
 const tmpDir = os.tmpDir()+'/sms';
@@ -41,7 +42,26 @@ app.use(express.static(tmpDir));
 
 app.post('/proxy', function(req, res) {
   var url = req.params.url;
-  req.pipe(request.post(url, {form:req.body})).pipe(res);
+  var data = req.body;
+  var url = data.url;
+  // console.log(url , data)
+  if(url.indexOf('https')>=0){
+    req.pipe(https.request(url)).pipe(res);
+
+    var options = url.parse(request.url);
+    options.headers = request.headers;
+    options.method = request.method;
+    options.agent = false;
+
+    var connector = https.request(url, function(serverResponse) {
+       serverResponse.pipe(response);
+    });
+    req.pipe(connector);
+
+  }else{
+    req.pipe(http.request(url)).pipe(res);
+  }
+  
 });
 
 app.get('/api' , function(req, res){

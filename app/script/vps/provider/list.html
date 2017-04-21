@@ -10,11 +10,10 @@
             <div class="box-operation">
                 <div class="operation-wrap">
                     <!-- 跳转createye页面的链接 -->
-                    <a href="/base/warehouse/create" class="btn btn-primary"><i class="fa fa-plus"></i>新增</a>
+                    <a href="/vps/provider/create" class="btn btn-primary"><i class="fa fa-plus"></i>新增</a>
                 </div>
                 <div class="operation-quick">
-                    <div class="ui-quick-search" slt-quick></div>
-                    
+                   
                     <!-- <button class="btn btn-op" sl-search="page.params.options.base" sl-search-change="search"><i class="fa fa-filter"></i>筛选</button> -->
                     <button class="btn btn-default " sl-fields="page.fields.model" sl-fields-options="page.fields.options"><i class="fa fa-gear fa-only"></i></button>
                 </div>
@@ -24,7 +23,7 @@
                     <thead>
                         <tr>
                             <th ng-repeat="row in page.fields.model" slt-filter="row" slt-sort="{{row.sort ? row.key : ''}}"></th>
-                            <th>操作</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody ng-if="!data.length">
@@ -42,9 +41,9 @@
                                 <span ng-if="field.key=='user_status'">{{row[field.key] | toggle}}</span>
                             </td>
                             <td>
-                                <a href="/system/user/{{row['id']}}">查看</a>
-                                <a href="/system/user/{{row['id']}}/edit">编辑</a>
-                                <a sl-toggle="row['user_status']" ng-click="toggle(row)"></a>
+                                <a href="/vps/server/list/{{row['id']}}">管理</a>
+                                <a href="/vps/provider/{{row['id']}}/edit">编辑</a>
+                                <a ng-confirm="{title:'提示',content:'确定删除吗？',callback:remove,params:row}">删除</a>
                             </td>
                         </tr>
                     </tbody>

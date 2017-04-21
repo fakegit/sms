@@ -21,6 +21,19 @@
         border-bottom:1px solid #eee;
         background: #fff;
     }
+    tbody>tr>td{
+        vertical-align: middle;
+    }
+    tbody td img{
+        width:30px;
+        // border-radius: 15px;
+        margin-right: 5px;
+    }
+    tbody td h5{
+        font-size: 13px;
+        margin-bottom:6px;
+    }
+
     //操作菜单 分隔符
     td a:nth-child(n+2):before{
         content:'|';
@@ -32,8 +45,11 @@
         &:first-child {
             width: 50px;
         }
+        &.auto{
+            width: auto;
+        }
         &:last-child {
-            width: 150px;
+            width: 180px;
             // text-align: center;
         }
         border-bottom: 1px solid #ddd;

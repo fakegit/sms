@@ -5,7 +5,7 @@ define(['app'], function(app) {
 
     return app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider, $locationProvider) {
         $urlRouterProvider
-            .otherwise('/user/list');
+            .otherwise('/vps/provider');
 
         $stateProvider
             .state('app', {

@@ -1,6 +1,5 @@
 define(['app','config'], function(app , config) {
-    app.factory('sl', ['$state','core','ui','httpx','intercept','store','print', function($state, core, ui , httpx ,intercept, store , print) {
-
+    app.factory('sl', ['$state','core','ui','httpx','intercept','store','print','api', function($state, core, ui , httpx ,intercept, store , print , api) {
 
         var options = { loadingLatency: 100 };
 
@@ -12,8 +11,10 @@ define(['app','config'], function(app , config) {
 
         core.extend( local , ui );
 
-        core.extend( local , httpx );
+        core.extend( local , api);
         
+        core.extend( local , httpx );
+
         core.extend( local , {
             
             'reload': function() {
@@ -37,6 +38,10 @@ define(['app','config'], function(app , config) {
             }
         });
 
+        local.store['localMode'] = 1;
+
+        local.dep = api.dep;
+        
         return local;
     }]);
 

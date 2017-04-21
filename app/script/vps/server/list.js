@@ -1,11 +1,13 @@
 define(['app'], function(app) {
 
-    return app.controller('vps.list', ['$scope', 'SVPS', 'sl', '$timeout','print', function($scope, service, sl,  $timeout,printer) {
+    return app.controller('vps.server.list', ['$scope', 'SVPS', 'sl', '$timeout','print','$stateParams', function($scope, service, sl,  $timeout,printer,$stateParams) {
 
         var loadingLatency = sl.options.loadingLatency || 100,
             loadingTimeout;
 
-        var vm = $scope, data = [];
+        var vm = $scope, 
+            data = [],
+            provider = $stateParams.id;
 
         var page = {
             loading: true,
@@ -16,7 +18,9 @@ define(['app'], function(app) {
             fields : {
                 options : [
                     { "key": "@", "value": "序号", "display": true}, 
-                    { "key": "provider", "value": "供应商", "display": true }, 
+                    { "key": "label", "value": "名称", "display": true }, 
+                    { "key": "provider_name", "value": "供应商", "display": true }, 
+                    { "key": "type", "value": "类型", "display": true }, 
                     { "key": "remark", "value": "描述", "display": true },
                 ],
 
@@ -38,20 +42,11 @@ define(['app'], function(app) {
                 // 初始化筛选字段，
                 options : {
                     // 用于 sl-search 插件
-                    base : [{
-                        title: "产品",
-                        group: [
-                            {title:'货号',model:'product_id',type:'input',value:'0001'},
-                            {title:'商品名',model:'name',type:'input'},
-                            {title:'商品条码',model:'barCode',type:'input'}
-
-                        ]
-                    }],
+                    base : [],
 
                     //用于快速搜索
                     quick : [
-                        {title:'登录名',model:'user_login'},
-                        {title:'昵称',model:'user_nicename'}
+                        {title:'名称',model:'name'},
                     ]
                 },
 
@@ -71,6 +66,10 @@ define(['app'], function(app) {
                         display:5
                     }
                 }
+            },
+
+            dep:{
+                provider:'PROVIDER'
             }
         };
 
@@ -82,7 +81,8 @@ define(['app'], function(app) {
             list    : list,
             reset   : reset,
             search  : search,
-            toggle  : toggle
+            remove  : remove,
+            copy    : copy,
         })
 
 
@@ -96,30 +96,6 @@ define(['app'], function(app) {
             list();
         }
 
-        /**
-         * 启用/禁用
-         * @return {[type]} [description]
-         */
-        function toggle(row){
-            var id = row.id;
-            var toggle_status = row.status == 1 ? 0 : 1;
-
-
-            loadingTimeout = $timeout(function() {
-                page.loading = true;
-            }, loadingLatency);
-
-            service.toggle({id:id , status:toggle_status}).then(function(resp){
-                if(resp.returnCode){
-                    sl.alert(resp.returnMsg);
-                }else{
-                    row.status = toggle_status;
-                }
-                sl.dep.update('WAREHOUSE');
-                $timeout.cancel(loadingTimeout);
-                page.loading = false;
-            })
-        }
 
         /**
          * 分页查询
@@ -152,6 +128,7 @@ define(['app'], function(app) {
                 if(resp.status){
                     sl.alert(resp.message);
                 }else{
+                    console.log(resp)
                     vm.data = afterList(resp.result.data);
                     //更新分页数据
                     page.params.pag.model.itemCount = resp.result.page_count;
@@ -159,6 +136,37 @@ define(['app'], function(app) {
             });
         }
         
+        function remove(row){
+            page.loading = true;
+            service.remove(row.id).then(function(resp){
+                page.loading = false;
+                if(resp.status){
+                    sl.alert(resp.message);
+                }
+                else{
+                    sl.notify('操作成功');
+                    list();
+                }
+            })
+        }
+
+        function copy(row){
+            var d = angular.copy(row);
+            d.name = d.name + '_副本';
+            delete d.id;
+            delete d['@'];
+
+            service.update(d).then(function(resp){
+                page.loading = false;
+                if(resp.status){
+                    sl.alert(resp.message);
+                }
+                else{
+                    sl.alert('操作成功');
+                    list();
+                }
+            })
+        }
 
         /**
          * 高级筛选触发的分页
@@ -202,6 +210,8 @@ define(['app'], function(app) {
                 page_size: page.params.pag.model.pageSize,
                 page_num : page.params.pag.model.pageNum
             });
+
+            obj.provider = provider;
 
             if(extra){
                 if(extra.sort){

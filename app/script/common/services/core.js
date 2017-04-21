@@ -1,7 +1,7 @@
 define(['app'], function(app) {
     app.factory('core', function() {
         //比较两个dom的相对位置
-        
+
         function comparePosition(a, b) {
             return a.compareDocumentPosition ?
                 a.compareDocumentPosition(b) :
@@ -41,14 +41,15 @@ define(['app'], function(app) {
         // obj, field, dup
         // obj, dup
         function coll(obj, field, dup) {
-            var ret = [] , h = {};
+            var ret = [],
+                h = {};
             dup = typeof(field) === 'boolean';
 
             for (var i in obj) {
                 if (obj[i]) {
                     ret.push(field ? obj[i][field] : obj[i]);
-                    if(dup)
-                        h[ obj[i] ] = 1;
+                    if (dup)
+                        h[obj[i]] = 1;
                 }
             }
             return dup ? key(h) : ret;
@@ -79,7 +80,7 @@ define(['app'], function(app) {
             var arr = [];
             for (var i in src) {
                 if (src[i][cond] == value) {
-                    arr.push( field ? src[i][field] : src[i] );
+                    arr.push(field ? src[i][field] : src[i]);
                 }
             }
             return arr;
@@ -103,7 +104,7 @@ define(['app'], function(app) {
                     }
                 }
                 if (r) {
-                    ret.push( field ? obj[i][field] : obj[i] );
+                    ret.push(field ? obj[i][field] : obj[i]);
                 };
             }
             return ret;
@@ -162,13 +163,13 @@ define(['app'], function(app) {
             return root;
         }
 
-        function unset(v){
+        function unset(v) {
             return (v === undefined || v === null) ? '' : v;
         }
 
 
         //格式化提交数据
-        function dig(obj , assoc) {
+        function dig(obj, assoc) {
             var ret = {};
             for (var i in obj) {
                 var key = i,
@@ -188,9 +189,9 @@ define(['app'], function(app) {
                 // 对象 转 object
                 else if (angular.isObject(value)) {
                     for (var k in value) {
-                        if(assoc === true){
+                        if (assoc === true) {
                             ret[key + '[' + k + ']'] = unset(value[k]);
-                        }else{
+                        } else {
                             ret[key + '.' + k] = unset(value[k]);
                         }
                     }
@@ -202,16 +203,16 @@ define(['app'], function(app) {
             return ret;
         }
 
-        function checkbox(v , obj){
+        function checkbox(v, obj) {
             var ret = angular.copy(obj);
             var h = {};
 
-            if(typeof(v) == 'string') v = v.split(',');
-            
-            for(var i in v) h[v[i]] = 1;
-            
+            if (typeof(v) == 'string') v = v.split(',');
+
+            for (var i in v) h[v[i]] = 1;
+
             for (var i = ret.length - 1; i >= 0; i--) {
-                if(h[ret[i].id]){
+                if (h[ret[i].id]) {
                     ret[i].checked = true;
                 }
             }
@@ -219,7 +220,7 @@ define(['app'], function(app) {
             return ret;
         }
 
-        function pushIndex(data , key){
+        function pushIndex(data, key) {
             key = key || '@';
             for (var i = data.length - 1; i >= 0; i--) {
                 data[i][key] = i + 1;
@@ -230,57 +231,54 @@ define(['app'], function(app) {
             return (v <= 9) ? ('0' + v) : v;
         }
 
-        function conv_time(t , date_only) {
+        function conv_time(t, date_only) {
             // var d = new Date( Number(t) );
 
-            if( !t ) return t;
-            var d = new Date( t );
+            if (!t) return t;
+            var d = new Date(t);
             var date = d.getFullYear() + '-' +
-                    fix0(d.getMonth() + 1) + '-' +
-                    fix0(d.getDate());
+                fix0(d.getMonth() + 1) + '-' +
+                fix0(d.getDate());
             var time = fix0(d.getHours()) + ':' +
-                    fix0(d.getMinutes()) + ':' +
-                    fix0(d.getSeconds());
+                fix0(d.getMinutes()) + ':' +
+                fix0(d.getSeconds());
 
-            return  date_only ? date : ( date + ' ' + time) ;
+            return date_only ? date : (date + ' ' + time);
         }
 
-        function timestamp(data , fields){
-            if(angular.isArray(data)){
-                for(var i in data){
-                    for( var j in fields){
-                        data[i][fields[j]] = conv_time( data[i][fields[j]] );
+        function timestamp(data, fields) {
+            if (angular.isArray(data)) {
+                for (var i in data) {
+                    for (var j in fields) {
+                        data[i][fields[j]] = conv_time(data[i][fields[j]]);
                     }
                 }
-            }
-            else if(angular.isObject(data)){
-                for( var j in fields){
-                    data[fields[j]] = conv_time( data[fields[j]] );
+            } else if (angular.isObject(data)) {
+                for (var j in fields) {
+                    data[fields[j]] = conv_time(data[fields[j]]);
                 }
+            } else {
+                return conv_time(data, !!fields)
             }
-            else{
-                return conv_time(data , !!fields)
-            }
-            
+
         }
 
         /**
          * 从obj对象中挖掘数据
          * @return {[type]} [description]
          */
-        function grab(data , fields){
-           
-            for(var i in fields){
+        function grab(data, fields) {
+
+            for (var i in fields) {
                 var key = fields[i];
                 var deep = fields[i].split('.');
 
-                for(var j in data){
+                for (var j in data) {
                     var obj = data[j];
-                    for(var k =0 ; k<deep.length;k++){
-                        if (obj[ deep[k] ]) {
-                            obj = obj[ deep[k] ];
-                        }
-                        else {
+                    for (var k = 0; k < deep.length; k++) {
+                        if (obj[deep[k]]) {
+                            obj = obj[deep[k]];
+                        } else {
                             obj = '';
                         }
                     }
@@ -292,28 +290,29 @@ define(['app'], function(app) {
         }
 
         //
-        function convToSuggest(data , raw){
+        function convToSuggest(data, raw) {
             data = data || [];
-            var ret = [] , raw = !!raw;
-            for(var i = 0, l =data.length;i<l;i++ ){
-                ret[i] = {id : data[i].id , label:data[i].name};
-                if(raw) ret[i].raw = data[i];
+            var ret = [],
+                raw = !!raw;
+            for (var i = 0, l = data.length; i < l; i++) {
+                ret[i] = { id: data[i].id, label: data[i].name };
+                if (raw) ret[i].raw = data[i];
             }
             return ret;
         }
 
-        function clean(data){
+        function clean(data) {
             var ret = {};
-            for(var i  in data){
-                if(data[i]) ret[i] = data[i];
+            for (var i in data) {
+                if (data[i]) ret[i] = data[i];
             }
             return ret;
         }
 
-        function speek(text){
-           var newUtterance = new SpeechSynthesisUtterance();
-           newUtterance.text = text;
-           window.speechSynthesis.speak(newUtterance);
+        function speek(text) {
+            var newUtterance = new SpeechSynthesisUtterance();
+            newUtterance.text = text;
+            window.speechSynthesis.speak(newUtterance);
         }
 
         function saveAs(blob, filename) {
@@ -334,29 +333,30 @@ define(['app'], function(app) {
             URL.revokeObjectURL(url);
         }
 
-       
-        function saveFile(cnt , filename){
+
+        function saveFile(cnt, filename) {
             var mime = {
-                'xml':'application/xml'
+                'xml': 'application/xml'
             }
 
             var t = filename.split('.');
 
-            var ext = t[t.length-1];
+            var ext = t[t.length - 1];
 
             var type = mime[ext] || 'text/plain';
-            
-            var b = new Blob([cnt] , {"type":type});
 
-            saveAs(b , filename);
+            var b = new Blob([cnt], { "type": type });
+
+            saveAs(b, filename);
         }
 
-        function now(){
-            return conv_time( Date.now() );
+        function now() {
+            return conv_time(Date.now());
         }
+
         return {
-            'comparePosition':comparePosition,
-            'contain':contain,
+            'comparePosition': comparePosition,
+            'contain': contain,
             'extend': extend,
             'key': key,
             'coll': coll,
@@ -365,21 +365,23 @@ define(['app'], function(app) {
             'filter': filter,
             'pick': pick,
             'tree': tree,
-            'checkbox':checkbox,
-            'dig' : dig,'clean':clean,
+            'checkbox': checkbox,
+            'dig': dig,
+            'clean': clean,
 
-            'pushIndex':pushIndex,
-            'timestamp':timestamp,
-            'format_time':conv_time,
-            'now':now,
-            'format':{
-                timestamp:timestamp,
-                grab:grab,
-                index:pushIndex,
-                suggest:convToSuggest
+            'pushIndex': pushIndex,
+            'timestamp': timestamp,
+            'format_time': conv_time,
+            'now': now,
+            'format': {
+                timestamp: timestamp,
+                grab: grab,
+                index: pushIndex,
+                suggest: convToSuggest
             },
-            'speek':speek,
-            'saveFile':saveFile
+            'speek': speek,
+            'saveFile': saveFile,
+            // 'xmlToJson':xmlToJson
         }
     });
 

@@ -37,8 +37,8 @@ require.config({
         'ng_file_upload':'../lib/ng-file-upload/ng-file-upload',
 
         'ng_notify':'../lib/ng-notify/dist/ng-notify.min',
-        'lowdb':'../lib/lowdb/lowdb.min',
-        'lodash':'../lib/lodash/lodash.min',
+        //'lowdb':'../lib/lowdb/lowdb.min',
+        //'lodash':'../lib/lodash/lodash.min',
         //'ui_select':'../lib/angular-ui-select/dist/select.min'
 
     },
@@ -99,13 +99,13 @@ require.config({
             deps: ['angular'],
             exports: 'ng_notify'
         },
-        'lowdb':{
+        /*'lowdb':{
             deps:['lodash'],
             exports:'lowdb'
         },
         'lodash':{
             exports:'lodash'
-        }
+        }*/
         /*'ui_select':{
             deps:['angular'],
             exports:'ui_select'
@@ -123,7 +123,7 @@ require([
     // 'ui_select','bootstrap_ui',
 
     // 'admin_lte',
-    'app', 'layout','menu','config','lodash','lowdb',
+    'app','db', 'layout','menu','config',//'lodash','lowdb',
     'common/filter/common',
     'common/services/sl',
     'common/services/core',
@@ -139,6 +139,11 @@ require([
     'common/services/l10n',
     'common/services/print',
     'common/services/hello',
+    'common/services/api',
+
+    'common/provider/common',
+    'common/provider/solusvm',
+    'common/provider/vultr',
 
     //指令
     'common/directives/common',
@@ -158,10 +163,16 @@ require([
     'index/index',
     'index/signin',
 
-    'vps/service',
-    'vps/router',
-    'vps/list',
+    'vps/server/service',
+    'vps/server/router',
+    'vps/server/list',
+    'vps/server/update',
+    'vps/server/manager',
 
+    'vps/provider/service',
+    'vps/provider/router',
+    'vps/provider/list',
+    'vps/provider/update'
 
 ], function($, angular, moment) {
 

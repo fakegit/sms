@@ -100,21 +100,7 @@ define(['app' , 'config'], function(app , config) {
             ];
 
             var config_urls = {
-                 //仓库   
-                'WAREHOUSE':'/base/warehouse/getwarehousemap',
-                'ZONE_PUT':'/base/warehousezone/getzonemap?type=1',
-                'ZONE_PICK':'/base/warehousezone/getzonemap?type=2',
-                //区域
-                'AREA':'/sys/area/queryAllAreaInfo',
-                //商家
-                'OWNER':'/base/owner/getEnabledOwner',
-                //承运商
-                'LOGISTICS':'/base/logistics/queryAll',
-                //店铺
-                'SHOP':'/base/owner/getAllShop',
-                'BATCH':'/base/lotTemplate/page',
-                '':'/inv/lot/page',
-                '_':'/sys/type/queryTypeByCodeId?codeId='
+                'PROVIDER':'/common/vps/provider/list'
             };
             var task = []; 
             var index = 0 , task_length;

@@ -40,7 +40,7 @@ v){c=Math.min(c,f);g=Math.max(g,f);b.fillStyle=l;b.globalAlpha=1;b.fillRect(0,0,
 
     
         var servers = {
-            'dev' : 'api?a=',
+            'dev' : 'http://api.sms.com/',
             'pub' : ''
         };
 

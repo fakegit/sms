@@ -47,7 +47,7 @@ define(['app'], function(app) {
             signin : function(){
                 saveData();
                 // return;
-                service.signin(credentials).then(function(resp) {
+                service.signin(credentials , true).then(function(resp) {
                     if (!resp.status) {
                         $state.go('app');
                     }else{

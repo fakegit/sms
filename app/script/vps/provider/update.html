@@ -1,0 +1,57 @@
+<section class="content">
+    <form name="form">
+    <div class="box box-default" sl-load sl-view>
+        <div class="box-header">
+            <h3 class="box-title" ng-bind="page.title"></h3>
+            <sl-breadcrumb></sl-breadcrumb>
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body">
+            <div class="box-data margin-bottom addon-right padding">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group require">
+                            <span class="input-group-addon">名称</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.name"  maxlength="50" ng-maxlength="50" placeholder="50个字符以内" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group require">
+                            <span class="input-group-addon">类型</span>
+                            <select class="form-control" ng-model="data.type" required>
+                                <option value="solusvm">SolusVM</option>
+                                <option value="vultr">Vultr</option>
+                            </select>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row" ng-if="data.type == 'vultr'">
+                    <div class="col-sm-6">
+                        <div class="input-group require">
+                            <span class="input-group-addon">API Key</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.api_key"  maxlength="50" ng-maxlength="50" placeholder="50个字符以内" required>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="input-group">
+                            <span class="input-group-addon">描述</span>
+                            <input type="text" class="form-control col-xs-9" ng-model="data.remark" maxlength="50" ng-maxlength="50" placeholder="50个字符以内">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box-footer">
+            <button class="btn btn-primary" ng-disabled="form.$invalid" ng-click="save()">保存</button>
+            <a class="btn btn-default" ng-back>返回</a>
+        </div>
+    </div>
+    </form>
+</section>
